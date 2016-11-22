@@ -11,6 +11,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/api/puppies', require('./routes/api.js'));
+app.use('/api', require('./routes/api.js'));
 
 app.listen(PORT, () => console.log('Server here! Listening on', PORT));
