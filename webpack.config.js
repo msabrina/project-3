@@ -52,6 +52,9 @@ module.exports = {
       { test: /\.jpg$/,
         loader: 'file-loader?name=/img/[name].[hash:base64:5].[ext]'
       },
+      { test: /\.png$/,
+        loader: 'file-loader?name=/img/[name].[hash:base64:5].[ext]'
+      },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel'
