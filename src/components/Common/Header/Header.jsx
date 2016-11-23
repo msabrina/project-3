@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import './Header.css';
+import styles from './Header.css';
 
 class Header extends Component {
 
   render() {
     return (
-      <div className="header-container">
+      <div className={styles['header-container']}>
 
-      <div className="logo">
+      <div className={styles['logo']}>
         <img src="" alt=""/>
         <h1>chairShare</h1>
       </div>
-      <nav>
-        <Link to="/products">Create Post</Link>
-        <Link to="/">Profile</Link>
+      <nav className={styles['links']}>
+        <Link className={styles['create-post']} to="/products">Create Post</Link>
+        <Link className={styles['profile']} to="/">Profile</Link>
       </nav>
 
       </div>
