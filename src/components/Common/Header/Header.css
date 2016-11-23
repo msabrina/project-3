@@ -1,0 +1,42 @@
+.header-container {
+  height: 15vh;
+  width: 100%;
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 5%;
+}
+
+.links {
+  width: 30vw;
+}
+
+.create-post {
+  margin: 10%;
+  font-size: 1.5em;
+  text-decoration: none;
+  font-family: arial;
+}
+
+.profile {
+  margin: 10%;
+  font-size: 1.5em;
+  text-decoration: none;
+  font-family: arial;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-family: arial;
+  font-size: 3em;
+}
+
+nav {
+  margin: 5%;
+}
+
