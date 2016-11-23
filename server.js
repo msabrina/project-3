@@ -12,6 +12,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/api', require('./routes/api.js'));
 
-app.listen(PORT, () => console.log('Server here! Listening on', PORT));
+app.use('/api/v1', require('./routes/api.js'));
+
+app.get('*', (req, res) => {
+  res.sendFile('/index.html');
+})
+
+
+app.listen(PORT, () => console.warn(`Server here! Listening on port ${PORT}!`));
