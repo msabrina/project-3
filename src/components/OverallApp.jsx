@@ -8,7 +8,6 @@ class OverallApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      token: '',
       post: [],
       totalResults: 0,
       searchTerm: '',
@@ -18,12 +17,39 @@ class OverallApp extends Component {
     };
   }
 
+  setOverallState(obj) {
+    this.setState(obj);
+  }
+
+  doLogin(email, password) {
+    const bodyObj = {
+      email: email,
+      password: password,
+    }
+    fetch('/api/v1/users/login', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'POST',
+      body: JSON.stringify(bodyObj)
+    })
+    .then(r => r.json())
+    .then(token => {
+      console.log(token);
+      localStorage.setItem('userAuthToken', token);
+    })
+    .catch(err => console.log(err));
+  }
+
   render() {
     return (
-      <Router history={browserHistory}>
-        <Route path='/' component={App1} />
-        <Route path='/products' component={App2} />
-      </Router>
+      <div>
+        {this.props.children && React.cloneElement(this.props.children, {
+          doLogin: this.doLogin.bind(this),
+          setOverallState: this.setOverallState.bind(this),
+          overallState: this.state,
+        })}
+      </div>
     );
   }
 }

@@ -7,6 +7,11 @@ import Profile from './Profile/Profile.jsx';
 
 class App1 extends Component {
 
+  constructor(props) {
+    super(props);
+    console.log(this.props.overallState);
+  }
+
   render() {
     return (
       <div className="app">
@@ -17,6 +22,7 @@ class App1 extends Component {
         </div>
         <PostItems />
         <Profile />
+        {this.props.children && React.clone}
       </div>
     );
   }
