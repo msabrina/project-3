@@ -4,6 +4,10 @@ import SearchBox from './SearchBox/SearchBox.jsx';
 import './PostItems.css';
 
 const PostItems = props => (
+  constructor() {
+
+  }
+
   <div className="side-bar">
     <SearchBox />
     <PostItem />

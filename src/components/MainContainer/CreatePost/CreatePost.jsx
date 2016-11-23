@@ -2,6 +2,8 @@ import React from 'react';
 import './CreatePost.css';
 
 const CreatePost = (props) =>
+
+// function to set the state of the input fields and send it back up to app
     return (
       <div className="create-Post">
         <h1>Create Post:</h1>

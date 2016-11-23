@@ -5,6 +5,18 @@ import MainContainer from './MainContainer/MainContainer.jsx';
 import PostItems from './PostItems/PostItems.jsx';
 
 class App extends Component {
+  constructor(props) {
+    super();
+
+    this.state = {
+      post: [],
+      totalResults: 0,
+      searchTerm: '',
+      title: '',
+      image: '',
+      description: ''
+    }
+  }
 
   render() {
     return (
@@ -14,9 +26,9 @@ class App extends Component {
         <Header />
           <h1>Hi there</h1>
         </div>
-        <Main-Container />
+        <MainContainer />
         <h2></h2>
-        <Post-Items />
+        <PostItems />
       </div>
     );
   }
