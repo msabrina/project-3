@@ -10,7 +10,7 @@ router.route('/login')
   .post(userModel.logIn, sendAsJSON);
 
 router.route('/:token')
-  .get(userModel.getUserData, sendAsJSON)
+  .get(auth.authenticate, userModel.getUserData, sendAsJSON)
   .put(sendAsJSON)
   .delete(sendAsJSON);
 
