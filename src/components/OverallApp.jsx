@@ -29,8 +29,8 @@ class OverallApp extends Component {
     }
     fetch('/api/v1/users/login', {
       headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
+        'Content-Type': 'application/json',
+    }),
       method: 'POST',
       body: JSON.stringify(bodyObj)
     })
@@ -42,21 +42,31 @@ class OverallApp extends Component {
     .catch(err => console.log(err));
   }
 
-  // createUser() {
-  //   fetch('/api/v1/users', {
-  //     method: 'POST',
-  //     body:
-  //   })
-  // }
+
+
+  postProduct() {
+    e.preventDefault();
+    const productObj = {
+      title: this.state.title,
+      description: this.state.description
+    }
+    fetch('/api/v1/products', {
+      headers: {
+        Token_Authorization: token,
+      },
+      method: 'POST',
+      body: JSON.stringify(productObj)
+    });
+  }
 
   render() {
     return (
       <div>
       <Header />
         {this.props.children && React.cloneElement(this.props.children, {
-          doLogin: this.doLogin.bind(this),
-          setOverallState: this.setOverallState.bind(this),
           overallState: this.state,
+          setOverallState: this.setOverallState.bind(this),
+          doLogin: this.doLogin.bind(this),
         })}
       </div>
     );
