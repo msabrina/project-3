@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItem from './PostItem.css';
+import './PostItem.css';
 
 const PostItem = props => (
   <div className="post-item">
