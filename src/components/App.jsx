@@ -4,6 +4,7 @@ import Header from './Header/Header.jsx';
 import MainContainer from './MainContainer/MainContainer.jsx';
 import PostItems from './PostItems/PostItems.jsx';
 
+
 class App extends Component {
   constructor(props) {
     super();
@@ -22,12 +23,11 @@ class App extends Component {
     return (
       <div className="app">
         <div className="Header">
+          <Header />
 
-        <Header />
           <h1>Hi there</h1>
         </div>
         <MainContainer />
-        <h2></h2>
         <PostItems />
       </div>
     );

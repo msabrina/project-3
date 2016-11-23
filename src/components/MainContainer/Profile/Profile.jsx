@@ -1,19 +1,15 @@
 import React from 'react';
-import './Profile.css';
-import MyPost from './MyPost/MyPost.jsx';
 import Watching from './Watching/Watching.jsx';
 import MyPostContainer from './MyPostContainer/MyPostContainer.jsx';
+import './Profile.css';
 
-const MyPostContainer = props => {
+const Profile = props => {
   <div className="my-post-container">
     <h1>Profile</h1>
-    <div className="post-watching-box">
-      <MyPost />
-      <Watching />
-    </div>
+    <MyPostContainer />
   </div>
 }
 
-export default MyPostContainer;
+export default Profile;
 
 
