@@ -1,13 +1,13 @@
 import React from 'react';
-import './SearchBox.css';
+import styles from './SearchBox.css';
 
 const SearchBox = props => (
-  <div className="search">
-    <div>
+  <div className={styles["search"]}>
+    <div className={styles["search-input"]}>
       <p>Search</p>
       <input type="text"/>
     </div>
-    <select>
+    <select className={styles["drop-down"]}>
       <option value="">Option 1</option>
       <option value="">Option 2</option>
     </select>
