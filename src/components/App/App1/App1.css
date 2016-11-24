@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background-color: lightblue;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+h1 {
+  margin: 0;
+}

@@ -1,0 +1,67 @@
+.home-page {
+  background-color: lightgreen;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-logo {
+  height: 100vh;
+  width: 40vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.home-content {
+  height: 100vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-logo h1 {
+  font-size: 3em;
+  font-family: arial;
+}
+
+.home-page h2 {
+  font-family: arial;
+}
+
+.home-logo img {
+  height: 20vh;
+  width: 20vw;
+}
+
+.home-input {
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-input p {
+  margin: 2%;
+  font-family: arial;
+}
+
+.home-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page button {
+  height: 5vh;
+  width: 15vw;
+  margin: 1%;
+}

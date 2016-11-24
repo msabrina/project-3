@@ -1,0 +1,26 @@
+.search {
+  height: 13vh;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgrey;
+  border: 1px solid black;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input p {
+  margin-right: 5%;
+  font-family: arial;
+}
+
+.drop-down {
+  height: 4vh;
+  width: 15vw;
+}

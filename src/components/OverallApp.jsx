@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { browserHistory, Router, Route, Link } from 'react-router';
 import Header    from './Common/Header/Header.jsx';
-import App1      from './App1/App1.jsx';
-import App2      from './App2/App2.jsx';
-import App3      from './App3/App3.jsx';
+import App1      from './App/App1/App1.jsx';
+import App2      from './App/App2/App2.jsx';
+import App3      from './App/App3/App3.jsx';
 
 class OverallApp extends Component {
   constructor(props) {
@@ -52,7 +52,6 @@ class OverallApp extends Component {
   render() {
     return (
       <div>
-      <Header />
         {this.props.children && React.cloneElement(this.props.children, {
           doLogin: this.doLogin.bind(this),
           setOverallState: this.setOverallState.bind(this),
