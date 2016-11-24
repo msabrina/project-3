@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory, Router, Route, Link } from 'react-router';
-import Header    from './Common/Header/Header.jsx';
+import Header    from './App/Common/Header/Header.jsx';
 import App1      from './App/App1/App1.jsx';
 import App2      from './App/App2/App2.jsx';
 import App3      from './App/App3/App3.jsx';
