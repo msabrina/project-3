@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import './App3.css';
+import './App2.css';
 import PostItems from './PostItems/PostItems.jsx';
-import SelectedItem  from './SelectedItem/SelectedItem.jsx';
+import CreatePost from './CreatePost/CreatePost.jsx';
+import Header from './../Common/Header/Header.jsx';
 
-class App3 extends Component {
+
+class App2 extends Component {
   render() {
     return (
       <div className="app">
         <div className="Header">
+          <Header />
         </div>
         <PostItems />
       </div>
@@ -15,4 +18,4 @@ class App3 extends Component {
   }
 }
 
-export default App3;
+export default App2;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { browserHistory, Router, Route, Link } from 'react-router';
-import Header    from './Common/Header/Header.jsx';
-import App1      from './App1/App1.jsx';
-import App2      from './App2/App2.jsx';
-import App3      from './App3/App3.jsx';
+import Header    from './App/Common/Header/Header.jsx';
+import App1      from './App/App1/App1.jsx';
+import App2      from './App/App2/App2.jsx';
+import App3      from './App/App3/App3.jsx';
 
 class OverallApp extends Component {
   constructor(props) {
@@ -14,7 +14,11 @@ class OverallApp extends Component {
       searchTerm: '',
       title: '',
       image: '',
-      description: ''
+      description: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
     };
   }
 
@@ -42,6 +46,34 @@ class OverallApp extends Component {
     .catch(err => console.log(err));
   }
 
+ createUser(e) {
+    e.preventDefault();
+    const bodyObj = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password
+    }
+    fetch('/api/v1/users', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'POST',
+      body: JSON.stringify(bodyObj)
+    })
+    .then(r => r.json())
+    .then((token) => {
+      localStorage.setItem('userAuthToken', token);
+    })
+    .catch(err => console.log(err));
+  }
+
+  updateBodyForm(e) {
+    console.log(e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
 
 
   postProduct() {
@@ -62,12 +94,20 @@ class OverallApp extends Component {
   render() {
     return (
       <div>
-      <Header />
         {this.props.children && React.cloneElement(this.props.children, {
           overallState: this.state,
           setOverallState: this.setOverallState.bind(this),
           doLogin: this.doLogin.bind(this),
+          createUser: this.createUser.bind(this),
         })}
+        <CreateUser
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          password={this.state.password}
+          formChange={this.updateBodyForm.bind(this)}
+          createUser={this.createUser.bind(this)}
+        />
       </div>
     );
   }
