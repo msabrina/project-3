@@ -4,6 +4,8 @@ import Header    from './App/Common/Header/Header.jsx';
 import App1      from './App/App1/App1.jsx';
 import App2      from './App/App2/App2.jsx';
 import App3      from './App/App3/App3.jsx';
+import HomePage  from './HomePage/HomePage.jsx';
+
 
 class OverallApp extends Component {
   constructor(props) {
@@ -99,15 +101,14 @@ class OverallApp extends Component {
           setOverallState: this.setOverallState.bind(this),
           doLogin: this.doLogin.bind(this),
           createUser: this.createUser.bind(this),
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password,
+          formChange: this.updateBodyForm.bind(this),
+          createUser: this.createUser.bind(this),
         })}
-        <CreateUser
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          email={this.state.email}
-          password={this.state.password}
-          formChange={this.updateBodyForm.bind(this)}
-          createUser={this.createUser.bind(this)}
-        />
+
       </div>
     );
   }
