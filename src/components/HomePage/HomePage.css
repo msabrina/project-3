@@ -1,28 +1,63 @@
 .auth-home {
-  background-color: #FAFAFA;
-  height: 100vh;
-  width: 100vw;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background-image: url('/restHW.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: .8;
 }
 
 .home-logo {
-  height: 30vh;
+  height: 50vh;
   width: 50vw;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  color: black;
+}
+
+.home-logo img {
+  height: 20vh;
+  width: 15vw;
+  margin-left: -10%;
+}
+
+.home-logo h1 {
+  margin-top: 13%;
+  margin-left: -5%;
+  font-family: arial;
+  color: #FAFAFA;
 }
 
 .home-about {
-  height: 70vh;
-  width: 50vw;
+  height: 50vh;
+  width: 40vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  text-align: center;
+}
+
+.home-about h2 {
+  font-family: arial;
+  color: #FAFAFA;
+  font-size: 2em;
+  margin: 0;
+}
+
+.home-about p {
+  font-family: arial;
+  font-size: 1.2em;
+  color: #FAFAFA;
+  margin: 0;
 }

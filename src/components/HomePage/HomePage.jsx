@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import styles from './HomePage.css';
 
 
@@ -6,8 +7,10 @@ class HomePage extends Component {
 render() {
     return (
       <div className={styles['auth-home']}>
+        <Link to="/signup">Signup</Link>
+        <Link to="/login">Login</Link>
         <div className={styles["home-logo"]}>
-          <img src="" alt="Logo" />
+          <img src="/chairShare.png" alt="Logo" />
           <h1>chairShare</h1>
         </div>
         <div className={styles['home-about']}>
