@@ -11,8 +11,6 @@ render() {
           <input />
           <p>Password</p>
           <input />
-          <p>Code</p>
-          <input />
         </form>
       </div>
     );
