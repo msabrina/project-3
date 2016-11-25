@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App2.css';
-import PostItems from './PostItems/PostItems.jsx';
+import styles from './App2.css';
+import PostItems from './../Common/PostItems/PostItems.jsx';
 import CreatePost from './CreatePost/CreatePost.jsx';
 import Header from './../Common/Header/Header.jsx';
 
@@ -8,11 +8,14 @@ import Header from './../Common/Header/Header.jsx';
 class App2 extends Component {
   render() {
     return (
-      <div className="app">
-        <div className="Header">
+      <div>
+        <div className={styles["Header"]}>
           <Header />
         </div>
-        <PostItems />
+        <div className={styles["app"]}>
+          <PostItems />
+          <CreatePost />
+        </div>
       </div>
     );
   }

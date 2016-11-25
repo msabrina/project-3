@@ -13,8 +13,8 @@ class Header extends Component {
         <h1>chairShare</h1>
       </div>
       <nav className={styles['links']}>
-        <Link className={styles['create-post']} to="/products">Create Post</Link>
-        <Link className={styles['profile']} to="/">Profile</Link>
+        <Link className={styles['create-post']} to="/create">Create Post</Link>
+        <Link className={styles['profile']} to="/profile">Profile</Link>
       </nav>
 
       </div>
