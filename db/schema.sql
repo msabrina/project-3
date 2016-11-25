@@ -46,21 +46,11 @@ COMMIT;
 
 BEGIN;
 
-DROP TABLE IF EXISTS unapproved_user;
 DROP TABLE IF EXISTS question;
-DROP TABLE IF EXISTS user_answer;
 
 COMMIT;
 
 BEGIN;
-
-CREATE TABLE applicant (
-  applicant_id SERIAL UNIQUE PRIMARY KEY,
-  fname VARCHAR(30) NOT NULL,
-  lname VARCHAR(30) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL
-);
 
 CREATE TABLE question (
   question_num INT UNIQUE NOT NULL PRIMARY KEY,
@@ -69,20 +59,6 @@ CREATE TABLE question (
   choice_2 VARCHAR(255) NOT NULL,
   choice_3 VARCHAR(255) NOT NULL,
   choice_4 VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE applicant_answer (
-  applicant_id INT NOT NULL UNIQUE PRIMARY KEY,
-  question_1_answer INT,
-  question_2_answer INT,
-  question_3_answer INT,
-  question_4_answer INT,
-  question_5_answer INT,
-  question_6_answer INT,
-  question_7_answer INT,
-  question_8_answer INT,
-  question_9_answer INT,
-  question_10_answer INT
 );
 
 COMMIT;

@@ -1,20 +1,22 @@
-const router    = require('express').Router();
-const userModel = require('../models/user.js');
-const auth      = require('../lib/auth.js');
+const router         = require('express').Router();
+const userModel      = require('../models/user.js');
+const questionModel  = require('../models/question.js');
+const auth           = require('../lib/auth.js');
 
 function sendAsJSON (req, res, next) {
   res.json(res.rows);
 }
 
+router.route('/survey')
+  .get(questionModel.getQuestions, sendAsJSON);
+
 router.route('/login')
   .post(userModel.logIn, sendAsJSON);
 
-router.route('/:token')
+router.route('/')
   .get(auth.authenticateUser, userModel.getUserData, sendAsJSON)
+  .post(userModel.createUser, sendAsJSON)
   .put(sendAsJSON)
   .delete(sendAsJSON);
-
-router.route('/')
-  .post(userModel.createUser, sendAsJSON);
 
 module.exports = router;
