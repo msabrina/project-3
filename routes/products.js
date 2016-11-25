@@ -7,12 +7,12 @@ function sendAsJSON (req, res, next) {
 }
 
 router.route('/:id')
-  .get(auth.authenticate, productModel.getOneProduct, sendAsJSON)
-  .put(auth.authenticate, productModel.editProduct, sendAsJSON)
-  .delete(auth.authenticate, productModel.deleteProduct, sendAsJSON);
+  .get(auth.authenticateUser, productModel.getOneProduct, sendAsJSON)
+  .put(auth.authenticateUser, productModel.editProduct, sendAsJSON)
+  .delete(auth.authenticateUser, productModel.deleteProduct, sendAsJSON);
 
 router.route('/')
   .get(productModel.getAllProducts, sendAsJSON)
-  .post(auth.authenticate, productModel.createProduct, sendAsJSON);
+  .post(auth.authenticateUser, productModel.createProduct, sendAsJSON);
 
 module.exports = router;

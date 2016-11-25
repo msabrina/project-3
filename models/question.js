@@ -9,7 +9,7 @@ function createTempUser (req, res, next) {
   const email = req.body.email.toLowerCase();
   const password = bcrypt.hashSync(req.body.password, SALTROUNDS);
 
-  const query = `INSERT INTO unapproved_user (fname, lname, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id, fname, lname, email;`;
+  const query = `INSERT INTO applicant (fname, lname, email, password) VALUES ($1, $2, $3, $4) RETURNING applicant_id, fname, lname, email;`;
 
   const values = [
     first,
@@ -20,7 +20,7 @@ function createTempUser (req, res, next) {
 
   db.one(query, values)
   .then((data) => {
-    auth.getUserToken(data)
+    auth.getApplicantToken(data)
       .then((token) => res.rows = token)
       .then(() => next())
       .catch(err => next(err));

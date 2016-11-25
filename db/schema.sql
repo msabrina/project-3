@@ -54,8 +54,8 @@ COMMIT;
 
 BEGIN;
 
-CREATE TABLE unapproved_user (
-  user_id SERIAL UNIQUE PRIMARY KEY,
+CREATE TABLE applicant (
+  applicant_id SERIAL UNIQUE PRIMARY KEY,
   fname VARCHAR(30) NOT NULL,
   lname VARCHAR(30) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
@@ -71,8 +71,8 @@ CREATE TABLE question (
   choice_4 VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE user_answer (
-  user_id INT NOT NULL UNIQUE PRIMARY KEY,
+CREATE TABLE applicant_answer (
+  applicant_id INT NOT NULL UNIQUE PRIMARY KEY,
   question_1_answer INT,
   question_2_answer INT,
   question_3_answer INT,
