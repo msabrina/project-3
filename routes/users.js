@@ -13,6 +13,10 @@ router.route('/survey')
 router.route('/login')
   .post(userModel.logIn, sendAsJSON);
 
+// TODO: get rid of this route; this is just for testing
+router.route('/:token')
+  .get(auth.authenticateUser, userModel.getUserData, userModel.getUserPosts, userModel.getUserWatches, userModel.prepareResponse, sendAsJSON);
+
 router.route('/')
   .get(auth.authenticateUser, userModel.getUserData, sendAsJSON)
   .post(userModel.createUser, sendAsJSON)
