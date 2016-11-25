@@ -12,7 +12,9 @@ class App1 extends Component {
         <div className="Header">
           <Header />
         </div>
-        <PostItems />
+        <PostItems
+          showProducts={this.props.showProducts}
+        />
         <Profile />
       </div>
     );

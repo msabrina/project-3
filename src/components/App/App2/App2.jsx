@@ -13,6 +13,7 @@ class App2 extends Component {
           <Header />
         </div>
         <PostItems />
+        <CreatePost />
       </div>
     );
   }
