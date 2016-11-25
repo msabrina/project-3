@@ -4,7 +4,9 @@ DROP TABLE IF EXISTS "user";
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS image;
 DROP TABLE IF EXISTS user_post_ref;
+DROP TABLE IF EXISTS watched_items_ref;
 DROP TABLE IF EXISTS image_post_ref;
+DROP TABLE IF EXISTS question;
 
 COMMIT;
 
@@ -42,15 +44,10 @@ CREATE TABLE image_post_ref (
   image_id INT NOT NULL
 );
 
-COMMIT;
-
-BEGIN;
-
-DROP TABLE IF EXISTS question;
-
-COMMIT;
-
-BEGIN;
+CREATE TABLE watched_items_ref (
+  user_id INT NOT NULL,
+  post_id INT NOT NULL
+);
 
 CREATE TABLE question (
   question_num INT UNIQUE NOT NULL PRIMARY KEY,
