@@ -11,6 +11,7 @@ const PORT         = process.argv[2] || process.env.port || 3000;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api/v1', require('./routes/api.js'));
