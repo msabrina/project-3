@@ -25,6 +25,10 @@ render() {
             <p>Email</p>
             <input />
             </div>
+            <div className={styles['home-input']}>
+            <p>Password</p>
+            <input />
+            </div>
             <button>Apply!</button>
           </form>
         <button>Log In</button>
