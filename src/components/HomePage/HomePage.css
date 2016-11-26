@@ -1,17 +1,17 @@
 .auth-home {
+  background-color: #FAFAFA;
+  opacity: .9;
+  border-radius: 1em;
   position: absolute;
-  top: 5%;
-  left: 5%;
-  background-image: url('/restHW.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  width: 90vw;
+  top: 25%;
+  left: 25%;
+  height: 50vh;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: .8;
+  z-index: 1;
 }
 
 .home-logo {
@@ -35,7 +35,7 @@
   margin-top: 13%;
   margin-left: -5%;
   font-family: arial;
-  color: #FAFAFA;
+  color: black;
 }
 
 .home-about {
@@ -50,14 +50,69 @@
 
 .home-about h2 {
   font-family: arial;
-  color: #FAFAFA;
-  font-size: 2em;
-  margin: 0;
+  color: black;
+  font-size: 1.5em;
+  margin: 1%;
 }
 
 .home-about p {
   font-family: arial;
-  font-size: 1.2em;
-  color: #FAFAFA;
-  margin: 0;
+  font-size: .8em;
+  color: black;
+  margin: 1%;
 }
+
+.box-one {
+  position: absolute;
+  background-image: url('/blue.png');
+  background-size: cover;
+  background-position: center;
+  top: 2%;
+  left: 1%;
+  height: 48vh;
+  width: 49vw;
+}
+
+.box-two {
+  position: absolute;
+  background-image: url('/tan.png');
+  background-size: cover;
+  background-position: center;
+  top: 2%;
+  left: 49.9%;
+  height: 48vh;
+  width: 49vw;
+}
+
+.box-three {
+  position: absolute;
+  background-image: url('/green.png');
+  background-size: cover;
+  background-position: center;
+  top: 50%;
+  left: 1%;
+  height: 48vh;
+  width: 49vw;
+}
+
+.box-four {
+  position: absolute;
+  background-image: url('/brown.png');
+  background-size: cover;
+  background-position: center;
+  top: 50%;
+  left: 49.9%;
+  height: 48vh;
+  width: 49vw;
+}
+
+.home-about button {
+  height: 5vh;
+  width: 10vw;
+  background-color: salmon;
+  color: #FAFAFA;
+  border-radius: .5em;
+  border-style: none;
+  margin: 1%;
+}
+
