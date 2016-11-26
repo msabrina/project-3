@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DropZone from 'react-dropzone';
 import styles from './CreatePost.css';
 

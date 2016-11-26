@@ -6,13 +6,12 @@ import App2      from './App/App2/App2.jsx';
 import App3      from './App/App3/App3.jsx';
 import HomePage  from './HomePage/HomePage.jsx';
 
-
 class OverallApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productListItem: postItem[0],
-      products: postItem,
+      productListItem: '',
+      products: '',
       totalResults: 0,
       searchTerm: '',
       title: '',
@@ -79,6 +78,23 @@ class OverallApp extends Component {
     });
   }
 
+// Get users survery
+  userSurvey(e) {
+    fetch('/users/survey/', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((array) => {
+      this.setState({
+        questions: array
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
 // mutator function changes slected product
 // Code acquired from FireHouse lab.
   changeProduct(item) {
@@ -87,6 +103,7 @@ class OverallApp extends Component {
     });
   }
 
+// we are setting the state like this because we are using react router.
 
   render() {
     return (
@@ -104,11 +121,13 @@ class OverallApp extends Component {
           createUser: this.createUser.bind(this),
           products: this.state,
           changeProduct: this.changeProduct.bind(this),
-          showProducts: this.showProducts.bind(this),
-        })}
+          // showProducts: this.showProducts.bind(this),
+        })
+        }
       </div>
     );
   }
 }
+
 
 export default OverallApp;
