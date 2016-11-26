@@ -8,12 +8,22 @@ render() {
     return (
       <div className={styles['log-in']}>
       <Link to="/app">App1</Link>
-        <form>
-          <p>Email</p>
-          <input />
-          <p>Password</p>
-          <input />
+        <form className={styles['log-box']}>
+          <div className={styles["home-logo"]}>
+            <img src="/chairShare.png" alt="Logo" />
+            <h1>chairShare</h1>
+          </div>
+          <div className={styles['input-box']}>
+          <div className={styles['email-box']}>
+            <p id={styles['email']}>Email</p>
+            <input />
+          </div>
+          <div className={styles['password-box']}>
+            <p id={styles['password']}>Password</p>
+            <input />
+          </div>
           <button>Log In</button>
+          </div>
         </form>
       </div>
     );
