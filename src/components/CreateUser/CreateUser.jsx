@@ -3,8 +3,9 @@ import styles from './CreateUser.css';
 
 const CreateUser = props => (
   <div className={styles["home-page"]}>
+    <div className={styles['create-user']}>
     <div className={styles["home-logo"]}>
-      <img src="" alt="Logo" />
+      <img src="/chairShare.png" alt="Logo" />
       <h1>chairShare</h1>
     </div>
     <div className={styles["home-content"]}>
@@ -29,7 +30,7 @@ const CreateUser = props => (
       </div>
       <div className={styles["home-input"]}>
       <p>Email</p>
-      <input
+      <input id="email"
         type="text"
         name="email"
         placeholder="Email"
@@ -45,7 +46,8 @@ const CreateUser = props => (
         value={props.password}
         onChange={props.formChange} />
       </div>
-      <button onClick={props.createUser}> Hello </button>
+      <button onClick={props.createUser}> Submit </button>
+    </div>
     </div>
   </div>
 );
