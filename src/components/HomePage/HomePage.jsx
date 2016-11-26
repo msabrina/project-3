@@ -6,6 +6,7 @@ import styles from './HomePage.css';
 class HomePage extends Component {
 render() {
     return (
+      <div className={styles["home-page"]}>
       <div className={styles['auth-home']}>
         <Link to="/signup">Signup</Link>
         <Link to="/login">Login</Link>
@@ -21,6 +22,11 @@ render() {
           survey to see if you're rich enough, bitch</p>
           <button>See if you qualify</button>
         </div>
+      </div>
+        <div className={styles["box-one"]} />
+        <div className={styles["box-two"]} />
+        <div className={styles["box-three"]} />
+        <div className={styles["box-four"]} />
       </div>
     );
   }
