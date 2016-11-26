@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DropZone from 'react-dropzone';
 import styles from './CreatePost.css';
 
@@ -13,8 +13,6 @@ constructor(props) {
     };
   }
 // function to set the state of the input fields and send it back up to app
-
-<<<<<<< HEAD
   onImageDrop (images) {
     this.setState({
       formData: this.state.formData.append('image', images[0]),
@@ -36,10 +34,7 @@ constructor(props) {
 
   render() {
     return (
-      <div className="create-Post">
-=======
       <div className={styles["create-post"]}>
->>>>>>> master
         <h1>Create Post:</h1>
         <p>Title:</p>
         <input type="text" value={this.state.title} />
