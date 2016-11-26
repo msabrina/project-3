@@ -11,7 +11,8 @@ class OverallApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: [],
+      productListItem: postItem[0],
+      products: postItem,
       totalResults: 0,
       searchTerm: '',
       title: '',
@@ -21,6 +22,7 @@ class OverallApp extends Component {
       lastName: '',
       email: '',
       password: '',
+      url:'',
     };
   }
 
@@ -77,20 +79,14 @@ class OverallApp extends Component {
     });
   }
 
-
-  postProduct() {
-    e.preventDefault();
-    const productObj = {
-      title: this.state.title,
-      description: this.state.description
-    }
-    fetch('/api/v1/products', {
-      headers: {
-        Token_Authorization: token,
-      },
-      method: 'POST',
-      body: JSON.stringify(productObj)
+// mutator function changes slected product
+// Code acquired from FireHouse lab.
+  changeProduct(item) {
+    this.setState({
+      products: this.state.productListItem[item],
     });
+  }
+
   }
 
   render() {
@@ -107,8 +103,10 @@ class OverallApp extends Component {
           password: this.state.password,
           formChange: this.updateBodyForm.bind(this),
           createUser: this.createUser.bind(this),
+          products: this.state,
+          changeProduct: this.changeProduct.bind(this),
+          showProducts: this.showProducts.bind(this),
         })}
-
       </div>
     );
   }

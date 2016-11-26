@@ -12,10 +12,15 @@ class App2 extends Component {
         <div className={styles["Header"]}>
           <Header />
         </div>
+<<<<<<< HEAD
+        <PostItems />
+        <CreatePost />
+=======
         <div className={styles["app"]}>
           <PostItems />
           <CreatePost />
         </div>
+>>>>>>> master
       </div>
     );
   }
