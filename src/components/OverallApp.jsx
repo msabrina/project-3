@@ -87,7 +87,6 @@ class OverallApp extends Component {
     });
   }
 
-  }
 
   render() {
     return (
