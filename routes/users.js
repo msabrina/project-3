@@ -8,7 +8,8 @@ function sendAsJSON (req, res, next) {
 }
 
 router.route('/survey')
-  .get(questionModel.getQuestions, sendAsJSON);
+  .get(questionModel.getQuestions, questionModel.shuffleQuestions, sendAsJSON)
+  .post(questionModel.saveAnswers, questionModel.checkAnswers, questionModel.getTempID, questionModel.storeTempID, sendAsJSON);
 
 router.route('/login')
   .post(userModel.logIn, sendAsJSON);

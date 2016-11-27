@@ -56,31 +56,32 @@ class CreateUser extends Component {
   render() {
     return (
       <div className={styles["home-page"]}>
+        <div className={styles['create-user']}>
         <div className={styles["home-logo"]}>
-          <img src="" alt="Logo" />
+          <img src="/chairShare.png" alt="Logo" />
           <h1>chairShare</h1>
-        </div>
-        <div className={styles["home-content"]}>
+      </div>
+      <div className={styles["home-content"]}>
           <h2>Sign Up</h2>
-          <div className={styles["home-input"]}>
-            <p>First Name</p>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={this.state.firstName}
-              onChange={this.updateNameForm.bind(this)} />
-          </div>
-          <div className={styles["home-input"]}>
-            <p>Last Name</p>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={this.state.lastName}
-              onChange={this.updateLastForm.bind(this)} />
-          </div>
-          <div className={styles["home-input"]}>
+        <div className={styles["home-input"]}>
+          <p>First Name</p>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={this.state.firstName}
+            onChange={this.updateNameForm.bind(this)} />
+        </div>
+        <div className={styles["home-input"]}>
+          <p>Last Name</p>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={this.state.lastName}
+            onChange={this.updateLastForm.bind(this)} />
+        </div>
+        <div className={styles["home-input"]}>
           <p>Email</p>
           <input
             type="text"
@@ -88,8 +89,8 @@ class CreateUser extends Component {
             placeholder="Email"
             value={this.state.email}
           />
-          </div>
-          <div className={styles["home-input"]}>
+        </div>
+        <div className={styles["home-input"]}>
           <p>Password</p>
           <input
             type="password"
@@ -97,11 +98,13 @@ class CreateUser extends Component {
             placeholder="password"
             value={this.state.password}
             onChange={this.updatePasswordForm.bind(this)} />
-          </div>
-          <button onClick={this.createUser.bind(this)}> Sign Up! </button>
         </div>
+        <button onClick={this.createUser.bind(this)}> Sign Up! </button>
+      </div>
+      </div>
       </div>
     );
   }
 }
+
 export default CreateUser;

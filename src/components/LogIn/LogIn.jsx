@@ -52,8 +52,14 @@ render() {
     return (
       <div className={styles['log-in']}>
       <Link to="/app">App1</Link>
-
-          <p>Email</p>
+      <form className={styles['log-box']}>
+          <div className={styles["home-logo"]}>
+            <img src="/chairShare.png" alt="Logo" />
+            <h1>chairShare</h1>
+          </div>
+          <div className={styles['input-box']}>
+          <div className={styles['email-box']}>
+            <p id={styles['email']}>Email</p>
           <input
             type="text"
             placeholder="Email"
@@ -61,15 +67,19 @@ render() {
             onChange={this.updateEmailForm.bind(this)}
 
           />
-          <p>Password</p>
-          <input
-            type="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.updatePasswordForm.bind(this)}
-          />
+          </div>
+         <div className={styles['password-box']}>
+            <p id={styles['password']}>Password</p>
+            <input
+              type="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.updatePasswordForm.bind(this)}
+            />
           <button onClick={this.doLogin.bind(this)}>Log In</button>
-
+          </div>
+        </div>
+        </form>
       </div>
     );
   }

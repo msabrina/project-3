@@ -13,6 +13,7 @@ constructor(props) {
     };
   }
 // function to set the state of the input fields and send it back up to app
+
   onImageDrop (images) {
     this.setState({
       formData: this.state.formData.append('image', images[0]),
