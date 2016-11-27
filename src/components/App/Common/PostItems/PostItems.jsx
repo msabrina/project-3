@@ -6,7 +6,7 @@ import styles from './PostItems.css';
 class PostItems extends Component {
 
     showProducts() {
-      return props.products.map((item, i) =>
+      return this.props.products.map((item, i) =>
         <PostItem
           key={i}
           title={item.title}
@@ -18,9 +18,7 @@ class PostItems extends Component {
     }
 
 
-  componentWillMount() {
-    this.props.getAllProducts();
-  }
+
 
   render() {
     return(

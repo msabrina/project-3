@@ -29,69 +29,99 @@ class OverallApp extends Component {
     this.setState(obj);
   }
 
-  doLogin(email, password) {
-    const bodyObj = {
-      email: email,
-      password: password,
-    }
-    fetch('/api/v1/users/login', {
-      headers: new Headers({
-        'Content-Type': 'application/json',
-    }),
-      method: 'POST',
-      body: JSON.stringify(bodyObj)
-    })
-    .then(r => r.json())
-    .then(token => {
-      console.log(token);
-      localStorage.setItem('userAuthToken', token);
-    })
-    .catch(err => console.log(err));
+  componentWillMount() {
+    this.getAllProducts();
   }
 
- createUser(e) {
-    e.preventDefault();
-    const bodyObj = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password
-    }
-    fetch('/api/v1/users', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      method: 'POST',
-      body: JSON.stringify(bodyObj)
-    })
-    .then(r => r.json())
-    .then((token) => {
-      localStorage.setItem('userAuthToken', token);
-    })
-    .catch(err => console.log(err));
-  }
+// PUT /users/
+  // PutUser(e) {
+  //   e.preventDefault();
+  //   const bodyObj = {
+  //     firstName: this.state.firstName,
+  //     lastName: this.state.lastName,
+  //     email: this.state.email,
+  //     password: this.state.password
+  //   }
+  //   fetch('/api/v1/users', {
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json'
+  //     }),
+  //     method: 'PUT',
+  //     body: JSON.stringify(bodyObj)
+  //   })
+  //   .then(r => r.json())
+  //   .then((token) => {
+  //     localStorage.setItem('userAuthToken', token);
+  //   })
+  //   .catch(err => console.log(err));
+  // }
+
+  // DeleteUser(e){
+  //   e.preventDefault();
+  //   fetch('/products/:id', {
+  //     hearders: new Headers({
+  //       'Content-Type': 'application/json',
+  //       Token_Authorization: token,
+  //     }),
+  //     method: 'DELETE',
+  //     body: JSON.stringify(bodyObj)
+  //   })
+  //   .then(r => r.json())
+  //   .then((token) => {
+  //     localStorage.setItem('userAuthToken', token);
+  //   })
+  //   .catch(err => console.log(err));
+  // }
 
   updateBodyForm(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
 
-// Get users survery
-  userSurvey(e) {
-    fetch('/users/survey/', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
+// // Get users survery
+//   userSurvey(e) {
+//     fetch('/users/survey', {
+//       headers: new Headers({
+//         'Content-Type': 'application/json'
+//       }),
+//       method: 'GET',
+//     })
+//     .then(r => r.json())
+//     .then((array) => {
+//       this.setState({
+//         questions: array
+//       });
+//     })
+//     .catch(err => console.log(err));
+//   }
+
+//   postUsersSurvey() {
+//     fetch('/users/survey', {
+//       headers: new Headers({
+//         'Content-Type': 'application/json'
+//       }),
+//       method: 'POST',
+//       body: JSON.stringify({
+//         email: document.getElementById('email').value
+//         answer: document.getElementById('answer').value
+//       })
+//       .then(r => r.json())
+//       .then(())
+//   })
+
+  getAllProducts() {
+    const token = localStorage.getItem('userAuthToken');
+    fetch('/api/v1/products', {
+      headers: new Headers ({
+        Token_Authorization: token,
+        'Content-Type': 'application/json',
       }),
       method: 'GET',
     })
     .then(r => r.json())
-    .then((array) => {
-      this.setState({
-        questions: array
-      });
-    })
+    .then((data) => console.log(data))
     .catch(err => console.log(err));
   }
 
@@ -110,14 +140,10 @@ class OverallApp extends Component {
         {this.props.children && React.cloneElement(this.props.children, {
           overallState: this.state,
           setOverallState: this.setOverallState.bind(this),
-          doLogin: this.doLogin.bind(this),
-          createUser: this.createUser.bind(this),
           firstName: this.state.firstName,
           lastName: this.state.lastName,
           email: this.state.email,
           password: this.state.password,
-          formChange: this.updateBodyForm.bind(this),
-          createUser: this.createUser.bind(this),
           products: this.state,
           changeProduct: this.changeProduct.bind(this),
           // showProducts: this.showProducts.bind(this),
