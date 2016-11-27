@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import styles from './CreateUser.css';
 
 const CreateUser = props => (
@@ -46,7 +47,7 @@ const CreateUser = props => (
         value={props.password}
         onChange={props.formChange} />
       </div>
-      <button onClick={props.createUser}> Submit </button>
+      <button onClick={props.createUser}><Link className={styles['login']} to="/login"> Submit </Link></button>
     </div>
     </div>
   </div>

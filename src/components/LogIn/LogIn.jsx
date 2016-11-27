@@ -7,7 +7,6 @@ class LogIn extends Component {
 render() {
     return (
       <div className={styles['log-in']}>
-      <Link to="/app">App1</Link>
         <form className={styles['log-box']}>
           <div className={styles["home-logo"]}>
             <img src="/chairShare.png" alt="Logo" />
@@ -22,7 +21,7 @@ render() {
             <p id={styles['password']}>Password</p>
             <input />
           </div>
-          <button>Log In</button>
+          <button><Link className={styles['app-button']} to="/app"> Log In </Link></button>
           </div>
         </form>
       </div>
