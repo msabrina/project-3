@@ -2,12 +2,12 @@
 
 BEGIN;
 
-INSERT INTO post (title, description, user_id) VALUES ('Test 1', 'This is product 1', 1);
-INSERT INTO post (title, description, user_id) VALUES ('Test 2', 'This is product 2', 1);
-INSERT INTO post (title, description, user_id) VALUES ('Test 3', 'This is product 3', 2);
-INSERT INTO post (title, description, user_id) VALUES ('Test 4', 'This is product 4', 2);
-INSERT INTO post (title, description, user_id) VALUES ('Test 5', 'This is product 5', 3);
-INSERT INTO post (title, description, user_id) VALUES ('Test 6', 'This is product 6', 4);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 1', 'This is product 1', 1, 9.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 2', 'This is product 2', 1, 19.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 3', 'This is product 3', 2, 29.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 4', 'This is product 4', 2, 39.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 5', 'This is product 5', 3, 49.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 6', 'This is product 6', 4, 59.99, 0);
 
 INSERT INTO user_post_ref (user_id, post_id) VALUES (1, 1);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (1, 2);
@@ -30,5 +30,16 @@ INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3,
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (8, 'question 8', 'q8a1', 'q8a2', 'q8a3', 'q8a4');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (9, 'question 9', 'q9a1', 'q9a2', 'q9a3', 'q9a4');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (10, 'question 10', 'q10a1', 'q10a2', 'q10a3', 'q10a4');
+
+INSERT INTO answers (question_num, correct_answer) VALUES (1, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (2, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (3, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (4, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (5, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (6, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (7, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (8, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (9, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (10, 1);
 
 COMMIT;
