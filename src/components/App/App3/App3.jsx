@@ -12,7 +12,9 @@ class App3 extends Component {
           <Header />
         </div>
         <div className={styles['app']}>
-          <PostItems />
+          <PostItems
+            products={this.props.products}
+          />
           <SelectedItem />
         </div>
       </div>
