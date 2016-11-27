@@ -51,8 +51,7 @@ class LogIn extends Component {
 render() {
     return (
       <div className={styles['log-in']}>
-      <Link to="/app">App1</Link>
-      <form className={styles['log-box']}>
+        <form className={styles['log-box']}>
           <div className={styles["home-logo"]}>
             <img src="/chairShare.png" alt="Logo" />
             <h1>chairShare</h1>
@@ -76,9 +75,9 @@ render() {
               value={this.state.password}
               onChange={this.updatePasswordForm.bind(this)}
             />
-          <button onClick={this.doLogin.bind(this)}>Log In</button>
           </div>
-        </div>
+          <button><Link onClick={this.doLogin.bind(this)} className={styles['app-button']} to="/app"> Log In </Link></button>
+          </div>
         </form>
       </div>
     );

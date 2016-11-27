@@ -53,15 +53,16 @@
 
 .home-logo img {
   height: 20vh;
-  width: 20vw;
+  width: 16vw;
 }
 
 .home-input {
   width: 30vw;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  margin-left: -45%;
 }
 
 .home-input p {
@@ -87,4 +88,9 @@
 
 #email {
   margin-left: 5%;
+}
+
+.login {
+  color: #FAFAFA;
+  text-decoration: none;
 }

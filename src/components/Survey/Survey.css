@@ -1,7 +1,12 @@
 .survey {
-  height: 100vh;
-  width: 100vw;
-  background-color: lightblue;
+  position: absolute;
+  top: 1.5%;
+  left: 1%;
+  height: 97vh;
+  width: 98vw;
+  background-image: url('/survey.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
