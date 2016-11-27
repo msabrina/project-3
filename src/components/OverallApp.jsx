@@ -11,7 +11,7 @@ class OverallApp extends Component {
     super(props);
     this.state = {
       productListItem: '',
-      products: '',
+      products: [],
       totalResults: 0,
       searchTerm: '',
       title: '',
@@ -25,12 +25,15 @@ class OverallApp extends Component {
     };
   }
 
-  setOverallState(obj) {
-    this.setState(obj);
+  setOverallState(key, obj) {
+    this.setState({
+      [key]: obj
+    });
   }
 
   componentWillMount() {
     this.getAllProducts();
+    // this.showProducts();
   }
 
 // PUT /users/
@@ -121,7 +124,10 @@ class OverallApp extends Component {
       method: 'GET',
     })
     .then(r => r.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      this.setOverallState('products', data);
+    })
     .catch(err => console.log(err));
   }
 
@@ -145,7 +151,7 @@ class OverallApp extends Component {
           lastName: this.state.lastName,
           email: this.state.email,
           password: this.state.password,
-          products: this.state,
+          products: this.state.products,
           changeProduct: this.changeProduct.bind(this),
           // showProducts: this.showProducts.bind(this),
         })

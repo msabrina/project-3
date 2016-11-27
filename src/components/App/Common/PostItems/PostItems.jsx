@@ -18,8 +18,6 @@ class PostItems extends Component {
     }
 
 
-
-
   render() {
     return(
       <div className={styles['side-bar']}>
