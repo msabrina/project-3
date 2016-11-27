@@ -1,6 +1,6 @@
 .auth-home {
   background-color: #FAFAFA;
-  opacity: .9;
+  opacity: .8;
   border-radius: 1em;
   position: absolute;
   top: 25%;
@@ -26,17 +26,18 @@
 }
 
 .home-logo img {
-  height: 20vh;
-  width: 15vw;
+  height: 30vh;
+  width: 20vw;
   margin-left: -10%;
-  margin-top: 3%;
+  margin-top: -8%;
 }
 
 .home-logo h1 {
-  margin-top: 12%;
+  margin-top: 5%;
   margin-left: -3%;
   font-family: arial;
   color: black;
+  font-size: 3em;
 }
 
 .home-about {
