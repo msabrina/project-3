@@ -101,7 +101,7 @@ class CreateUser extends Component {
             value={this.state.password}
             onChange={this.updatePasswordForm.bind(this)} />
         </div>
-      <button onClick={this.createUser.bind(this)}><Link className={styles['login']} to="/app"> Submit </Link></button>
+      <Link className={styles['login']} to="/app"><button> Submit </button></Link>
 
     </div>
     </div>
