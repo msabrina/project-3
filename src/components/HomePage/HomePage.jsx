@@ -8,8 +8,6 @@ render() {
     return (
       <div className={styles["home-page"]}>
       <div className={styles['auth-home']}>
-        <Link to="/signup">Signup</Link>
-        <Link to="/login">Login</Link>
         <div className={styles["home-logo"]}>
           <img src="/chairShare.png" alt="Logo" />
           <h1>chairShare</h1>
@@ -20,7 +18,7 @@ render() {
           But nice used crap like Restoration Hardware and West Elm and antique
           shit. No poor people allowed. Want to see if you qualify? Take our
           survey to see if you're rich enough, bitch</p>
-          <button>See if you qualify</button>
+          <button><Link className={styles['home-button']} to="/survey">See if you qualify</Link></button>
         </div>
       </div>
         <div className={styles["box-one"]} />
