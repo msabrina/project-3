@@ -4,4 +4,6 @@ dist/
 
 .env
 
-public/uploads/temp/
+public/uploads/temp/*
+
+!public/uploads/temp/.keep
