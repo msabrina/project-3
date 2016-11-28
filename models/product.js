@@ -1,8 +1,9 @@
-const db   = require('../db/db.js');
-const auth = require('../lib/auth.js');
+const db         = require('../db/db.js');
+const auth       = require('../lib/auth.js');
+const AWSService = require('../services/AWS.js');
 
-const md5 = require('md5');
-const fs = require('fs');
+const md5  = require('md5');
+const fs   = require('fs');
 const path = require('path');
 
 function getAllProducts (req, res, next) {
@@ -112,7 +113,7 @@ function createProduct (req, res, next) {
   .catch(err => next(err));
 }
 
-function generateFileNames (req, res, next) {
+function generateFilePrefix (req, res, next) {
   const post = res.insertedPost;
   const user = res.userData;
   const hash = md5(`${post.post_id}-${user.user_id}`);
@@ -126,7 +127,7 @@ function createImages (req, res, next) {
   const user = res.userData;
   const hash = md5(`${user.userID}-${post.title.toLowerCase()}`);
   for (let fileKey in req.files) {
-    AWSService.uploadFile(fileKey, req.files[fileKey], res.generatedFilePrefix)
+    // AWSService.uploadFile(fileKey, req.files[fileKey], res.generatedFilePrefix)
   }
   next();
 }
@@ -168,7 +169,7 @@ module.exports = {
   getNextPostID,
   getUserData,
   createProduct,
-  generateFileNames,
+  generateFilePrefix,
   createImages,
   editProduct,
   deleteProduct,

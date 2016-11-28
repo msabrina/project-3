@@ -66,6 +66,6 @@ router.route('/:id')
 
 router.route('/')
   .get(productModel.getAllProducts, sendAsJSON)
-  .post(auth.authenticateUser, productModel.getUserData, upload.fields(fields), productModel.createProduct, productModel.generateFileNames, productModel.createImages, sendAsJSON);
+  .post(auth.authenticateUser, productModel.getUserData, upload.fields(fields), productModel.createProduct, productModel.generateFilePrefix, productModel.createImages, sendAsJSON);
 
 module.exports = router;
