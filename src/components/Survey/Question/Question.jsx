@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './Question.css';
 
 const Question = props => (
-  <div>
+  <div className={styles['quests']}>
     <p>{props.questionObj.question_text}</p>
     <select onChange={(e) => props.updateAnswerForm(props.questionObj.question_num, e.target.value)}>
       <option value="1">{props.questionObj.choice_1}</option>

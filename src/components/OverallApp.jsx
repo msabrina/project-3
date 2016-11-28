@@ -188,7 +188,6 @@ updateAnswerForm(questionNum, answerVal) {
   render() {
     return (
       <div>
-      <Link to='/product'>product</Link>
         {this.props.children && React.cloneElement(this.props.children, {
           overallState: this.state,
           // setOverallState: this.setOverallState.bind(this),

@@ -43,7 +43,6 @@ class PostItems extends Component {
         </div>
         <SearchBox />
         {this.showProducts()}
-
       </div>
     );
   }

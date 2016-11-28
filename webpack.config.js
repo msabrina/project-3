@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ReactJS Hello World',
+      title: 'chairShare',
       xhtml: true,
       inject: false,
       template: require('html-webpack-template'),

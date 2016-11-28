@@ -8,6 +8,14 @@
   margin: 1%;
 }
 
+.profile-info input {
+  border-style: none;
+  font-family: arial;
+  background-color: #FAFAFA;
+  height: 4vh;
+  width: 15vw;
+}
+
 .profile-edit {
   margin-left: 80%;
   margin-top: -5%;
