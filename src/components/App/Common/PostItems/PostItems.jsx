@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import PostItem from './PostItem/PostItem.jsx';
 import SearchBox from './SearchBox/SearchBox.jsx';
 import styles from './PostItems.css';
@@ -14,8 +15,8 @@ class PostItems extends Component {
   }
 
     showProducts() {
-      console.log(this.props.products, 'products');
       return this.props.products.map((item, i) =>
+        <Link to='/product'>
         <PostItem
           key={i}
           title={item.title}
@@ -23,18 +24,15 @@ class PostItems extends Component {
           description={item.description}
           price={item.price}
           id={item.post_id}
-          changeProduct={this.props.changeProduct}
-          onClick={() => this.props.changeProduct(console.log(i, 'going here'))}
+          product={item.product}
+          item={item}
+          clickMethod={this.props.changeProduct}
 
         />
+        </Link>
       );
     }
-// changeProduct(item) {
-//     console.log(this.state.activeProduct[item], 'hello')
-//     this.setState({
-//       activeProduct: this.state.activeProduct[item],
-//     });
-//   }
+
   // componentWillMount() {
   //   this.props.getAllProducts();
   //   // this.showProducts();

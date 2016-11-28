@@ -1,5 +1,5 @@
 import React,  { Component }from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import styles from './CreateUser.css';
 
 class CreateUser extends Component {
@@ -32,6 +32,7 @@ class CreateUser extends Component {
     .then(r => r.json())
     .then((token) => {
       localStorage.setItem('userAuthToken', token);
+      browserHistory.push('/app/profile');
     })
     .catch(err => console.log(err));
   }
@@ -100,7 +101,7 @@ class CreateUser extends Component {
             value={this.state.password}
             onChange={this.updatePasswordForm.bind(this)} />
         </div>
-      <button onClick={this.createUser.bind(this)}><Link className={styles['login']} to="/login"> Submit </Link></button>
+      <button onClick={this.createUser.bind(this)}><Link className={styles['login']} to="/app"> Submit </Link></button>
     </div>
     </div>
     </div>

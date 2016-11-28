@@ -15,13 +15,13 @@ class App3 extends Component {
         <div className={styles['app']}>
           <PostItems
             products={this.props.products}
-            // changeProduct={}
+            changeProduct={this.props.changeProduct}
             onClick={() => this.props.changeProduct(i)}
           />
           <SelectedItem
             product={this.props.products}
+            activeProduct={this.props.activeProduct}
           />
-
         </div>
       </div>
     );

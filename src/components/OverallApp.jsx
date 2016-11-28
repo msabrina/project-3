@@ -23,10 +23,30 @@ class OverallApp extends Component {
       email: '',
       password: '',
       url:'',
-      activeProduct: '',
+      activeProduct: {},
+      questions: [],
+      answers: {
+        1: '',
+        2: '',
+        3: '',
+        4: '',
+        5: '',
+        6: '',
+        7: '',
+        8: '',
+      },
     };
   }
 
+updateAnswerForm(questionNum, answerVal) {
+  console.log(questionNum, answerVal);
+  const newAnswers = Object.assign({}, this.state.answers);
+  newAnswers[questionNum] = answerVal;
+  console.log(newAnswers);
+  this.setState({
+    answers: newAnswers,
+  })
+}
   setOverallState(key, obj) {
     this.setState({
       [key]: obj
@@ -34,9 +54,12 @@ class OverallApp extends Component {
   }
 
   componentWillMount() {
-    // console.log(getAllProducts);
     this.getAllProducts();
-    // this.showProducts();
+    this.getAllQuestions();
+    console.log('here', this.state.questions)
+    this.setState({
+      activeProduct: this.state.products[0],
+    });
   }
 
 // PUT /users/
@@ -86,50 +109,41 @@ class OverallApp extends Component {
     });
   }
 
-// // Get users survery
-//   userSurvey(e) {
-//     fetch('/users/survey', {
-//       headers: new Headers({
-//         'Content-Type': 'application/json'
-//       }),
-//       method: 'GET',
-//     })
-//     .then(r => r.json())
-//     .then((array) => {
-//       this.setState({
-//         questions: array
-//       });
-//     })
-//     .catch(err => console.log(err));
-//   }
+// Get users survery
+  getAllQuestions() {
+    console.log('here 2');
+    fetch('/api/v1/users/survey', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((array) => {
+      console.log(array)
+      this.setState({
+        questions: array,
+      });
+    })
+    .catch(err => console.log(err));
+  }
 
-  // postUsersSurvey() {
-  //   fetch('/users/survey', {
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       email: document.getElementById('email').value
-  //       answer: {
-  //         1: document.getElementById('answer-1').value,
-  //         2: document.getElementById('answer-2').value,
-  //         3: document.getElementById('answer-3').value,
-  //         4: document.getElementById('answer-4').value,
-  //         5: document.getElementById('answer-5').value,
-  //         6: document.getElementById('answer-6').value,
-  //         7: document.getElementById('answer-7').value,
-  //         8: document.getElementById('answer-8').value,
-  //         9: document.getElementById('answer-9').value,
-  //         10: document.getElementById('answer-10').value,
-  //       }
-  //     })
-  //     .then(r => r.json())
-  //     .then((response) => )
-  // })
+  postUsersSurvey() {
+    fetch('/users/survey', {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      method: 'POST',
+      body: JSON.stringify({
+        email: document.getElementById('email').value,
+        answers: this.state.answers,
+      })
+    })
+    .then(r => r.json())
+    .catch(err => console.log(err))
+  }
 
   getAllProducts() {
-    console.log('here');
     const token = localStorage.getItem('userAuthToken');
     fetch('/api/v1/products', {
       headers: new Headers ({
@@ -142,16 +156,17 @@ class OverallApp extends Component {
     .then((data) => {
       console.log(data);
       this.setState({
-        products: data
+        products: data,
+        activeProduct: data[0],
       });
     })
     .catch(err => console.log(err));
   }
 
-  // getAllProducts() {
+  // getOneProducts() {
   //   console.log('here');
   //   const token = localStorage.getItem('userAuthToken');
-  //   fetch('/api/v1/products/:id', {
+  //   fetch(`/api/v1/products/${id}`, {
   //       headers: new Headers ({
   //         Token_Authorization: token,
   //         'Content-Type': 'application/json',
@@ -162,26 +177,43 @@ class OverallApp extends Component {
   //     .then((data) => {
   //       console.log(data);
   //       this.setState({
-  //         products: data
+  //         activeProduct: data
   //       });
   //     })
   //     .catch(err => console.log(err));
   // }
 
-  // handleSelectedItem(id) {
-  //   fetch`(/api/v1/products/${id}`, {
-  //     method: 'PUT'
-  //   })
-  //   .then(() => )
-  // }
+  editProduct() {
+    console.log('here');
+    const token = localStorage.getItem('userAuthToken');
+    fetch(`/api/v1/products/${id}`, {
+        headers: new Headers ({
+          Token_Authorization: token,
+          'Content-Type': 'application/json',
+        }),
+        method: 'PUT',
+      })
+      .then(r => r.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          activeProduct: data
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+
 
 // mutator function changes slected product
 // Code acquired from FireHouse lab.
   changeProduct(item) {
-    console.log(this.state.products, 'hello');
+    // console.log(this.state.products, 'hello');
+    console.log(item)
     this.setState({
-      products: this.state.activeProduct[item],
+      activeProduct: item,
     });
+    browserHistory.push('/product')
   }
 
 // we are setting the state like this because we are using react router.
@@ -189,6 +221,7 @@ class OverallApp extends Component {
   render() {
     return (
       <div>
+      <Link to='/product'>product</Link>
         {this.props.children && React.cloneElement(this.props.children, {
           overallState: this.state,
           // setOverallState: this.setOverallState.bind(this),
@@ -199,8 +232,10 @@ class OverallApp extends Component {
           products: this.state.products,
           changeProduct: this.changeProduct.bind(this),
           getAllProducts: this.getAllProducts.bind(this),
+          editProduct: this.editProduct.bind(this),
           activeProduct: this.state.activeProduct,
-          // showProducts: this.showProducts.bind(this),
+          updateAnswerForm: this.updateAnswerForm.bind(this),
+          questions: this.state.questions,
         })
         }
       </div>

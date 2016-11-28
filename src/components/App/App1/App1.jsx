@@ -18,6 +18,7 @@ class App1 extends Component {
           <Header />
         </div>
         <PostItems
+            changeProduct={this.props.changeProduct}
           products={this.props.products}
         />
         <div className={styles['app']}>
