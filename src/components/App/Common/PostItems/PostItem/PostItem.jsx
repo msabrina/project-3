@@ -3,7 +3,7 @@ import styles from './PostItem.css';
 
 const PostItem = props => (
   <div className={styles["post-item"]}
-    onClick={() => this.props.changeProduct(i)}>
+    onClick={() => props.changeProduct(console.log('going here'))}>
     <div className={styles["item-desc"]}>
       <h3>Product Title {props.title}</h3>
       <img src={props.images} alt={props.title}/>

@@ -23,7 +23,7 @@ class OverallApp extends Component {
       email: '',
       password: '',
       url:'',
-      activeProduct: [0]
+      activeProduct: '',
     };
   }
 
@@ -178,9 +178,9 @@ class OverallApp extends Component {
 // mutator function changes slected product
 // Code acquired from FireHouse lab.
   changeProduct(item) {
-    console.log(this.state.activeProduct[item])
+    console.log(this.state.products, 'hello');
     this.setState({
-      activeProduct: this.state.activeProduct[item],
+      products: this.state.activeProduct[item],
     });
   }
 

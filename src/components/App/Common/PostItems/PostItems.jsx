@@ -4,6 +4,14 @@ import SearchBox from './SearchBox/SearchBox.jsx';
 import styles from './PostItems.css';
 
 class PostItems extends Component {
+  constructor(props) {
+    super(props);
+
+    // this.state = {
+    //   // activeProduct: products[0],
+    //   // products: [],
+    // };
+  }
 
     showProducts() {
       console.log(this.props.products, 'products');
@@ -15,20 +23,23 @@ class PostItems extends Component {
           description={item.description}
           price={item.price}
           id={item.post_id}
+          changeProduct={this.props.changeProduct}
+          onClick={() => this.props.changeProduct(console.log(i, 'going here'))}
 
         />
       );
     }
-changeProduct(item) {
-    console.log(this.props.activeProduct[item])
-    this.setState({
-      activeProduct: this.props.activeProduct[item],
-    });
-  }
+// changeProduct(item) {
+//     console.log(this.state.activeProduct[item], 'hello')
+//     this.setState({
+//       activeProduct: this.state.activeProduct[item],
+//     });
+//   }
   // componentWillMount() {
   //   this.props.getAllProducts();
   //   // this.showProducts();
   // }
+
 
   render() {
     return(
