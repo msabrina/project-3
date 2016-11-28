@@ -1,0 +1,22 @@
+.my-post-container {
+  width: 29vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: arial;
+  border-top: 1px solid grey;
+  /*border-bottom: 1px solid lightgrey;*/
+  margin: 1%;
+}
+
+.new-post {
+  /*margin-left: 150%;*/
+  height: 5vh;
+  width: 10vw;
+  border-radius: 1em;
+  background-color: salmon;
+  opacity: .8;
+  color: #FAFAFA;
+  border-style: none;
+}

@@ -107,7 +107,7 @@ class OverallApp extends Component {
   //     }),
   //     method: 'POST',
   //     body: JSON.stringify({
-  //       email: document.getElementById('email').value,
+  //       email: document.getElementById('email').value
   //       answer: {
   //         1: document.getElementById('answer-1').value,
   //         2: document.getElementById('answer-2').value,
@@ -124,7 +124,6 @@ class OverallApp extends Component {
   //     .then(r => r.json())
   //     .then((response) => )
   // })
-  // }
 
   getAllProducts() {
     const token = localStorage.getItem('userAuthToken');

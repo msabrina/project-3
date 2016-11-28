@@ -68,7 +68,7 @@ render() {
                 <option value="">Lease</option>
                 <option value="">None</option>
               </select>
-              <button><Link className={styles['sub-survey']} to="/signup">Submit</Link></button>
+              <Link className={styles['sub-survey']} to="/signup"><button>Submit</button></Link>
             </div>
           </div>
         </div>

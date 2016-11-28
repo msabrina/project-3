@@ -20,7 +20,7 @@
   width: 50vw;
   display: flex;
   flex-direction: row;
-  opacity: .9;
+  opacity: .8;
 }
 
 .home-logo {
@@ -53,7 +53,7 @@
 
 .home-logo img {
   height: 20vh;
-  width: 16vw;
+  width: 13vw;
 }
 
 .home-input {
