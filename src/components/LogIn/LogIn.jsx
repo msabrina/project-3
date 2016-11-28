@@ -77,6 +77,7 @@ render() {
             />
           </div>
           <button><Link className={styles['app-button']} to="/app"> Log In </Link></button>
+
           </div>
         </form>
       </div>

@@ -25,6 +25,4 @@ class SelectedItem extends Component {
   }
 }
 
-
-
 export default SelectedItem;

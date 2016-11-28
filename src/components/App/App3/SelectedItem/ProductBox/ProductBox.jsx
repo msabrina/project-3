@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductBox.css';
+import styles from './ProductBox.css';
 
 const ProductBox = props => (
   <div className="product-box">

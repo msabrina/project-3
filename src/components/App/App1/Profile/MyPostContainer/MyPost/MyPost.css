@@ -1,0 +1,37 @@
+.my-post {
+  height: 15vh;
+  width: 29vw;
+  display: flex;
+  flex-direction: row;
+  background-color: #FAFAFA;
+}
+
+.post-text {
+  display: flex;
+  flex-direction: column;
+  width: 19vw;
+}
+
+.post-img-del {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 10vw;
+}
+
+.post-img-del img {
+  height: 10vh;
+  width: 8vw;
+}
+
+.post-img-del button {
+  margin-top: 2%;
+  margin-right: 6%;
+  height: 3vh;
+  width: 5vw;
+  background-color: lightblue;
+  border-radius: 1em;
+  border-style: none;
+  color: #FAFAFA;
+}

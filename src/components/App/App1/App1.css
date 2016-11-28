@@ -1,11 +1,16 @@
 body {
   margin: 0;
   background-color: #FAFAFA;
+  font-family: arial;
 }
 
 .app {
   display: flex;
   flex-direction: row;
+  background-image: url('/app1.png');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
 }
 
 h1 {

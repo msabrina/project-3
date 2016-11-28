@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router';
 import MyPost from './MyPost/MyPost.jsx';
-import './MyPostContainer.css';
+import styles from './MyPostContainer.css';
 
 const MyPostContainer = props => (
-  <div className="my-post-container">
+  <div className={styles["my-post-container"]}>
     <h3>My Posts</h3>
     <MyPost />
-    <button>Submit New Post</button>
+    <Link to='/create'><button className={styles["new-post"]}>Submit New Post</button></Link>
   </div>
   );
 

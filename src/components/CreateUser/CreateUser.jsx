@@ -102,6 +102,7 @@ class CreateUser extends Component {
             onChange={this.updatePasswordForm.bind(this)} />
         </div>
       <button onClick={this.createUser.bind(this)}><Link className={styles['login']} to="/app"> Submit </Link></button>
+
     </div>
     </div>
     </div>
@@ -110,3 +111,5 @@ class CreateUser extends Component {
 }
 
 export default CreateUser;
+
+// onClick={this.createUser.bind(this)}

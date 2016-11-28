@@ -143,6 +143,7 @@ updateAnswerForm(questionNum, answerVal) {
     .catch(err => console.log(err))
   }
 
+
   getAllProducts() {
     const token = localStorage.getItem('userAuthToken');
     fetch('/api/v1/products', {

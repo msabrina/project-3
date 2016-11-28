@@ -1,4 +1,57 @@
+<<<<<<< HEAD
 .test {
   max-width: 100px;
   height: auto;
+=======
+.product-box {
+  height: 50vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #FAFAFA;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 5%;
+}
+
+.product-text {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 30vw;
+  background-color: #FAFAFA;
+}
+
+.photo-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 30vw;
+  background-color: #FAFAFA;
+}
+
+.main-photo {
+  height: 25vh;
+  width: 20vw;
+}
+
+.small-photo-box {
+  height: 15vh;
+  width: 30vw;
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-photo-box img {
+  border: 1px solid black;
+  height: 10vh;
+  margin: 2%;
+>>>>>>> master
 }
