@@ -35,6 +35,10 @@
   text-decoration: none;
 }
 
+.create-post:hover {
+  color: #FAFAFA;
+}
+
 .profile {
   margin: 10%;
   font-size: 1em;
@@ -44,13 +48,25 @@
   text-decoration: none;
 }
 
+.profile:hover {
+  color: #FAFAFA;
+}
+
 .header-container h1 {
   margin: 0;
   font-family: arial;
   font-size: 2em;
 }
 
+.chairShare {
+  color: black;
+  text-decoration: none;
+}
+
+.chairShare:hover {
+  color: #FAFAFA;
+}
+
 nav {
   margin: 5%;
 }
-

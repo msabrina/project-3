@@ -42,6 +42,10 @@ constructor(props) {
           <p>Title:</p>
           <input type="text" value={this.state.title} />
         </div>
+        <div className={styles['price-box']}>
+          <p>Price:</p>
+          <input type="text" />
+        </div>
         <p>Images:</p>
         <DropZone
           className={styles['drop-zone']}
@@ -51,7 +55,7 @@ constructor(props) {
         </DropZone>
         <div className={styles['description-box']}>
           <p>Description:</p>
-          <input type="text" value={this.state.description} />
+          <textarea value={this.state.description} />
         </div>
         <Link to="/profile"><button> Create Post </button></Link>
       </div>

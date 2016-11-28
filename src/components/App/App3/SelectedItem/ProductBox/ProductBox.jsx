@@ -6,6 +6,7 @@ const ProductBox = props => (
     <div className={styles["product-text"]}>
       <p>Title:</p>
       <p>HERE IS THE SPECIFIC TITLE</p>
+      <p>$PRICE</p>
       <p>Description:</p>
       <p>HERE IS THE SPECIFIC DESCRIPTION. YADA YADA YADA YADA YADA YADA...</p>
     </div>

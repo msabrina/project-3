@@ -22,8 +22,7 @@ class PostItems extends Component {
     return(
       <div className={styles['side-bar']}>
         <SearchBox />
-        <PostItem />
-        <p>{this.showProducts()}</p>
+        {this.showProducts()}
       </div>
     );
   }

@@ -13,7 +13,8 @@
 
 .create-post button {
   position: absolute;
-  left: 82%;
+  left: 86%;
+  top: 85%;
   height: 6vh;
   width: 10vw;
   background-color: salmon;
@@ -38,6 +39,21 @@
   border-style: none;
 }
 
+.price-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.price-box input {
+  height: 3vh;
+  margin-left: 2%;
+  width: 15vw;
+  border-radius: .2em;
+  border-style: none;
+}
+
 .description-box {
   display: flex;
   flex-direction: row;
@@ -45,8 +61,8 @@
   align-items: center;
 }
 
-.description-box input {
-  height: 3vh;
+.description-box textarea {
+  height: 7vh;
   margin-left: 2%;
   width: 30vw;
   border-radius: .2em;
@@ -54,7 +70,12 @@
 }
 
 .drop-zone {
-  height: 30vh;
+  height: 20vh;
   width: 35vw;
   border: 2px dotted grey;
+  margin-bottom: 2%;
+}
+
+.drop-zone:hover {
+  background-color: white;
 }
