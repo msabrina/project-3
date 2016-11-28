@@ -1,18 +1,9 @@
 const bcrypt = require('bcrypt');
 const db     = require('../db/db.js');
 const auth   = require('../lib/auth.js');
+const { isValidEmail } = require('../lib/lib.js');
 
 const SALTROUNDS = 10;
-
-function isValidEmail (email) {
-  // regex for testing an email obtained from http://www.regular-expressions.info/email.html on 11/25/2016
-  // allows for all valid emails - including those on subdomains of subdomains, up to the maximum SMTP supports
-  // for more info, see above article
-  const emailRegex = new RegExp(/^[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
-  // more basic regex obtained from the same article as the previous one
-  // const emailRegex = new RegExp(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  return emailRegex.test(email);
-}
 
 function createUser (req, res, next) {
   // get data
@@ -133,6 +124,56 @@ function logIn (req, res, next) {
   .catch(err => next(err));
 }
 
+function updateUser (req, res, nnext) {
+  // get data
+  const first = req.body.firstName;
+  const last = req.body.lastName;
+  const email = req.body.email.toLowerCase();
+  const password = bcrypt.hashSync(req.body.password, SALTROUNDS);
+
+  // validate data
+  if (!(first || last || email || password)) next(new Error('Please check that all fields were filled out properly.'));
+  if (!isValidEmail(email)) next(new Error('Please submit a valid email address.'));
+
+  // build query
+  const query = `INSERT INTO "user" (fname, lname, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id, fname, lname, email;`;
+  // prepare values array
+  const values = [
+    first,
+    last,
+    email,
+    password,
+  ];
+
+  // execute query with the data...
+  db.one(query, values)
+  .then((data) => {
+    // ...then get a token for the user and send it back to the caller
+    auth.getUserToken(data)
+      .then((token) => res.rows = token)
+      .then(() => next())
+      .catch(err => next(err));
+  })
+  /* end of db then; catch db errors now */
+  .catch(err => next(err));
+}
+
+function deleteUser (req, res, next) {
+  const token = req.headers['token_authorization'] || req.body.token || req.params.token || req.query.token;
+  auth.getUserData(token)
+  .then((user) => {
+    const query = `DELETE FROM "user" WHERE user_id = $1;`;
+    const values = [user.data.user_id];
+    // db.none(query, values)
+    // .then(() => next())
+    // .catch(err => next(err));
+    console.log('Deleting ', user);
+    res.rows = `Deleting ${user}`;
+    next();
+  })
+  .catch(err => next(err));
+}
+
 module.exports = {
   createUser,
   getUserData,
@@ -140,4 +181,6 @@ module.exports = {
   getUserWatches,
   prepareResponse,
   logIn,
+  updateUser,
+  deleteUser,
 }

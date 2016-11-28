@@ -2,11 +2,23 @@ const db   = require('../db/db.js');
 const auth = require('../lib/auth.js');
 
 function getAllProducts (req, res, next) {
-  const query = `SELECT * FROM post;`;
+  const firstQuery = `SELECT * FROM post;`;
+  const secondQuery = `SELECT * FROM image INNER JOIN image_post_ref ON image.image_id = image_post_ref.image_id WHERE image_post_ref.post_id = $1;`;
 
-  db.any(query)
-  .then((data) => res.rows = data)
-  .then(() => next())
+  // found this little gem on SO: http://stackoverflow.com/a/39807816
+  db.task((t) => {
+    return t.map(firstQuery, [], post => {
+        return t.any(secondQuery, post.post_id)
+            .then(images => {
+                post.images = images;
+                return post;
+            });
+    }).then(t.batch);
+  })
+  .then((products) => {
+      res.rows = products;
+      next();
+  })
   .catch(err => next(err));
 }
 
@@ -17,7 +29,19 @@ function getOneProduct (req, res, next) {
   const values = [prod_id];
 
   db.oneOrNone(query, values)
-  .then((data) => res.rows = data)
+  .then((product) => res.rows = product)
+  .then(() => next())
+  .catch(err => next(err));
+}
+
+function getOneProductImages (req, res, next) {
+  const prod_id = req.params.id;
+
+  const query = `SELECT * FROM image I INNER JOIN image_post_ref R ON I.image_id = R.image_id WHERE R.post_id = $1;`;
+  const values = [prod_id];
+
+  db.any(query, values)
+  .then((images) => res.rows.images = images)
   .then(() => next())
   .catch(err => next(err));
 }
@@ -99,6 +123,7 @@ function deleteProduct (req, res, next) {
 module.exports = {
   getAllProducts,
   getOneProduct,
+  getOneProductImages,
   createProduct,
   editProduct,
   deleteProduct,
