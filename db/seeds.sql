@@ -45,7 +45,7 @@ COMMIT;
 BEGIN;
 
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (1, 'What is your annual household income?', '0-20k', '21k-40k', '41k-80k', '81k+');
-INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (2, 'What is the highest degree completed?', 'High School', 'Associate\'s Degree', 'Bachelor\'s Degree', 'Master\'s+');
+INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (2, 'What is the highest degree completed?', 'High School', 'Associate''s Degree', 'Bachelor''s Degree', 'Master''s+');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (3, 'What is your age?', '0-18', '19-25', '25-40', '41+');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (4, 'Employment Status: Are you currently…', 'Employed for wages', 'Self-employed', 'Unemployed', 'Homemaker');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (5, 'Where do you live?', 'United States of America', 'Canada', 'Mexico', 'Europe');
