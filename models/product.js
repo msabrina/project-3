@@ -1,6 +1,8 @@
 const db   = require('../db/db.js');
 const auth = require('../lib/auth.js');
 
+const md5 = require('md5');
+
 function getAllProducts (req, res, next) {
   const firstQuery = `SELECT * FROM post;`;
   const secondQuery = `SELECT * FROM image INNER JOIN image_post_ref ON image.image_id = image_post_ref.image_id WHERE image_post_ref.post_id = $1;`;
@@ -46,40 +48,56 @@ function getOneProductImages (req, res, next) {
   .catch(err => next(err));
 }
 
+function getNextPostID (req, res, next) {
+  const query = `SELECT nextval('post_post_id_seq');`;
+  db.one(query)
+  .then((num) => req.nextNum = num)
+  .then(() => next())
+  .catch(err => next(err));
+}
+
 function createProduct (req, res, next) {
+  console.log(req.body);
+  console.log(req.files);
   const title = req.body.title;
   const description = req.body.description;
+  const price = req.body.price;
+  const imageCount = req.files.length;
   const token = req.headers['token_authorization'] || req.body.token || req.params.token || req.query.token;
   let user_id = null;
   auth.getUserData(token)
   .then((user) => {
+    res.userData = user.data;
     user_id = user.data.user_id;
   })
   .then(() => {
     const queryOne = `
       INSERT INTO post
-        (title, description, user_id)
+        (title, description, price, image_count, user_id)
       VALUES
-        ($1, $2, $3)
-      RETURNING post_id;
+        ($1, $2, $3, $4, $5)
+      RETURNING *;
     `;
 
     const queryTwo = `
       INSERT INTO user_post_ref
         (user_id, post_id)
       VALUES
-        ($3, $4)
+        ($5, $6)
       ;
     `;
 
     const values = [
       title,
       description,
+      price,
+      imageCount,
       user_id,
     ];
 
     db.one(queryOne, values)
     .then((inserted) => {
+      res.insertedPost = inserted;
       values.push(parseInt(inserted.post_id));
       db.none(queryTwo, values)
       .then(() => next())
@@ -88,6 +106,22 @@ function createProduct (req, res, next) {
     .catch(err => next(err));
   })
   .catch(err => next(err));
+}
+
+function generateFileNames (req, res, next) {
+  const post = res.insertedPost;
+  const user = res.userData;
+  const preHash = `${post.post_id}-${user.user_id}`;
+  const hash = md5(preHash);
+  req.generatedFileName = hash;
+  res.generatedFileName = hash;
+  next();
+}
+
+function createImages (req, res, next) {
+  const uploadPath = `public/uploads`;
+  const tempPath = `public/uploads/temp`;
+  next();
 }
 
 function editProduct (req, res, next) {
@@ -124,7 +158,10 @@ module.exports = {
   getAllProducts,
   getOneProduct,
   getOneProductImages,
+  getNextPostID,
   createProduct,
+  generateFileNames,
+  createImages,
   editProduct,
   deleteProduct,
 }

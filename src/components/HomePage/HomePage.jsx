@@ -7,6 +7,10 @@ class HomePage extends Component {
 render() {
     return (
       <div className={styles["home-page"]}>
+      <Link to="/app">App</Link>
+      <Link to="/app/profile">Profile</Link>
+      <Link to="/app/create">create</Link>
+      <Link to="/app/product">product</Link>
       <div className={styles['auth-home']}>
         <div className={styles["home-logo"]}>
           <img src="/chairShare.png" alt="Logo" />
