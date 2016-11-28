@@ -34,6 +34,7 @@
 
 .post-item h3 {
   margin: 0;
+  font-size: .8em;
 }
 
 .post-item p {
@@ -45,4 +46,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#desc {
+  font-size: .5em;
 }
