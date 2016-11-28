@@ -76,7 +76,8 @@ render() {
               onChange={this.updatePasswordForm.bind(this)}
             />
           </div>
-          <Link className={styles['app-button']} to="/app"><button> Log In </button></Link>
+          <button><Link className={styles['app-button']} to="/app"> Log In </Link></button>
+
           </div>
         </form>
       </div>

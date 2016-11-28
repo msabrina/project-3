@@ -6,7 +6,10 @@ import Profile from './Profile/Profile.jsx';
 import Header from './../Common/Header/Header.jsx';
 
 class App1 extends Component {
-
+  // componentWillMount() {
+  //   this.props.getAllProducts();
+  //   // this.showProducts();
+  // }
   render() {
     return (
       <div>
@@ -15,6 +18,7 @@ class App1 extends Component {
         </div>
         <div className={styles['app']}>
         <PostItems
+            changeProduct={this.props.changeProduct}
           products={this.props.products}
         />
         <Profile />
