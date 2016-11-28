@@ -6,7 +6,9 @@ import styles from './SelectedItem.css';
 const SelectedItem = props => (
   <div className={styles["selected-item"]}>
     <h1>Selected Product</h1>
-    <ProductBox />
+    <ProductBox
+      title={props.activeProduct}
+     />
     <RelatedItems />
   </div>
   );

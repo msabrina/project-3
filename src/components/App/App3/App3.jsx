@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './App3.css';
 import PostItems from './../Common/PostItems/PostItems.jsx';
 import SelectedItem  from './SelectedItem/SelectedItem.jsx';
+// import ProductBox from './ProductBox/ProductBox.jsx';
 import Header from './../Common/Header/Header.jsx';
 
 class App3 extends Component {
@@ -14,8 +15,13 @@ class App3 extends Component {
         <div className={styles['app']}>
           <PostItems
             products={this.props.products}
+            // changeProduct={}
+            onClick={() => this.props.changeProduct(i)}
           />
-          <SelectedItem />
+          <SelectedItem
+            product={this.props.products}
+          />
+
         </div>
       </div>
     );
