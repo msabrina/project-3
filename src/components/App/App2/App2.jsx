@@ -14,6 +14,7 @@ class App2 extends Component {
         </div>
         <div className={styles["app"]}>
           <PostItems
+            changeProduct={this.props.changeProduct}
             products={this.props.products}
           />
           <CreatePost />

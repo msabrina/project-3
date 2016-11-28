@@ -10,7 +10,7 @@ class Header extends Component {
 
       <div className={styles['logo']}>
         <img src="/chairShare.png" alt="Logo"/>
-        <h1>chairShare</h1>
+        <h1><Link className={styles['chairShare']}to="/login">chairShare</Link></h1>
       </div>
       <nav className={styles['links']}>
         <Link className={styles['create-post']} to="/create">Create Post</Link>

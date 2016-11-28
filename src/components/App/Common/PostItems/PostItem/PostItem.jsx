@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './PostItem.css';
 
 const PostItem = props => (
-  <div className={styles["post-item"]}
-    onClick={props.changeProduct}>
+  <div className={styles["post-item"]} onClick={() => props.clickMethod(props.item)}>
     <div className={styles["item-desc"]}>
-      <h3>Product Title</h3>
-      <p>Product Description. yada yada yada. here's my description</p>
+      <h3>Product Title {props.title}</h3>
+      <p>{props.price}</p>
+      <p>{props.description}</p>
     </div>
-    <img src="" alt="Product Image"/>
+    <div className={styles['post-img']}>
+      <img src={props.images[0].url} alt={props.images[0].alt_text} />
+    </div>
   </div>
   );
 

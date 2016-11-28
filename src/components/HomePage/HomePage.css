@@ -116,7 +116,7 @@
   color: #FAFAFA;
   border-radius: .5em;
   border-style: none;
-  margin: 10%;
+  margin: 5%;
 }
 
 .home-button {
@@ -124,3 +124,11 @@
   text-decoration: none;
 }
 
+.link {
+  margin-top: 3%;
+  width: 25vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

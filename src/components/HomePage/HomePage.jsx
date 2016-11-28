@@ -7,10 +7,6 @@ class HomePage extends Component {
 render() {
     return (
       <div className={styles["home-page"]}>
-      <Link to="/app">App</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/create">create</Link>
-      <Link to="/product">product</Link>
       <div className={styles['auth-home']}>
         <div className={styles["home-logo"]}>
           <img src="/chairShare.png" alt="Logo" />
@@ -22,7 +18,10 @@ render() {
           But nice used crap like Restoration Hardware and West Elm and antique
           shit. No poor people allowed. Want to see if you qualify? Take our
           survey to see if you're rich enough, bitch</p>
-          <Link className={styles['home-button']} to="/survey"><button>See if you qualify</button></Link>
+          <div className={styles['link']}>
+            <Link className={styles['home-button']} to="/survey"><button>See if you qualify</button></Link>
+            <Link className={styles['home-button']} to="/login"><button>Log In</button></Link>
+          </div>
         </div>
       </div>
         <div className={styles["box-one"]} />
