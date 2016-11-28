@@ -40,6 +40,19 @@ INSERT INTO image_post_ref (post_id, image_id) VALUES (5, 10);
 INSERT INTO image_post_ref (post_id, image_id) VALUES (6, 11);
 INSERT INTO image_post_ref (post_id, image_id) VALUES (6, 12);
 
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (1, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (1, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (2, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (2, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (3, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (3, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (4, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (4, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (5, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (5, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (6, 1);
+INSERT INTO watched_items_ref (post_id, user_id) VALUES (6, 1);
+
 COMMIT;
 
 BEGIN;
