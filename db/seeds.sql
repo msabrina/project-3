@@ -1,5 +1,3 @@
--- seeds
-
 BEGIN;
 
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 1', 'This is product 1', 1, 9.99, 0);
@@ -9,12 +7,38 @@ INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 5', 'This is product 5', 3, 49.99, 0);
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 6', 'This is product 6', 4, 59.99, 0);
 
+INSERT INTO image (title, url, alt_text) VALUES ('T1', '/image-1.png', 'Alt 1');
+INSERT INTO image (title, url, alt_text) VALUES ('T2', '/image-2.png', 'Alt 2');
+INSERT INTO image (title, url, alt_text) VALUES ('T3', '/image-3.png', 'Alt 3');
+INSERT INTO image (title, url, alt_text) VALUES ('T4', '/image-4.png', 'Alt 4');
+INSERT INTO image (title, url, alt_text) VALUES ('T5', '/image-5.png', 'Alt 5');
+INSERT INTO image (title, url, alt_text) VALUES ('T6', '/image-6.png', 'Alt 6');
+INSERT INTO image (title, url, alt_text) VALUES ('T7', '/image-7.png', 'Alt 7');
+INSERT INTO image (title, url, alt_text) VALUES ('T8', '/image-8.png', 'Alt 8');
+INSERT INTO image (title, url, alt_text) VALUES ('T9', '/image-9.png', 'Alt 9');
+INSERT INTO image (title, url, alt_text) VALUES ('T10', '/image-10.png', 'Alt 10');
+INSERT INTO image (title, url, alt_text) VALUES ('T11', '/image-11.png', 'Alt 11');
+INSERT INTO image (title, url, alt_text) VALUES ('T12', '/image-12.png', 'Alt 12');
+
 INSERT INTO user_post_ref (user_id, post_id) VALUES (1, 1);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (1, 2);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (2, 3);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (2, 4);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (3, 5);
 INSERT INTO user_post_ref (user_id, post_id) VALUES (4, 6);
+
+INSERT INTO image_post_ref (post_id, image_id) VALUES (1, 1);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (1, 2);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (2, 3);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (2, 4);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (3, 5);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (3, 6);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (4, 7);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (4, 8);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (5, 9);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (5, 10);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (6, 11);
+INSERT INTO image_post_ref (post_id, image_id) VALUES (6, 12);
 
 COMMIT;
 
