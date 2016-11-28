@@ -16,7 +16,6 @@ class PostItems extends Component {
 
     showProducts() {
       return this.props.products.map((item, i) =>
-        <Link to='/product'>
         <PostItem
           key={i}
           title={item.title}
@@ -27,9 +26,7 @@ class PostItems extends Component {
           product={item.product}
           item={item}
           clickMethod={this.props.changeProduct}
-
         />
-        </Link>
       );
     }
 

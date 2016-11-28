@@ -26,15 +26,14 @@ render() {
     return (
       <div className={styles['survey']}>
         <div className={styles['survey-box']}>
-          <div className={styles['quest-one']}>
             <div className={styles["home-logo"]}>
               <img src="/chairShare.png" alt="Logo" />
               <h1>chairShare</h1>
             </div>
-            <div>hello</div>
+            <div className={styles['questions']}>
             {this.buildQuestionObjects()}
-              <button><Link className={styles['sub-survey']} to="/signup">Submit</Link></button>
             </div>
+            <Link className={styles['sub-survey']} to="/signup"><button>Submit</button></Link>
           </div>
         </div>
     );

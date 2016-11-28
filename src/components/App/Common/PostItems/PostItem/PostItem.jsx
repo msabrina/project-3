@@ -5,9 +5,11 @@ const PostItem = props => (
   <div className={styles["post-item"]} onClick={() => props.clickMethod(props.item)}>
     <div className={styles["item-desc"]}>
       <h3>Product Title {props.title}</h3>
-      <img src={props.images[0].url} alt={props.images[0].alt_text} />
-      <p>{props.description}</p>
       <p>{props.price}</p>
+      <p>{props.description}</p>
+    </div>
+    <div className={styles['post-img']}>
+      <img src={props.images[0].url} alt={props.images[0].alt_text} />
     </div>
   </div>
   );
