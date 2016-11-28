@@ -37,7 +37,7 @@ class CreateUser extends Component {
     .catch(err => console.log(err));
   }
 
-   updateNameForm(e) {
+  updateNameForm(e) {
     this.setState({
       firstName: e.target.value,
     });

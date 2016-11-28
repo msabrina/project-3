@@ -34,17 +34,19 @@ class OverallApp extends Component {
         6: '',
         7: '',
         8: '',
+        9: '',
+        10: '',
       },
     };
   }
 
 updateAnswerForm(questionNum, answerVal) {
-  console.log(questionNum, answerVal);
+  console.log(questionNum, answerVal)
   const newAnswers = Object.assign({}, this.state.answers);
   newAnswers[questionNum] = answerVal;
   console.log(newAnswers);
   this.setState({
-    answers: newAnswers,
+    answer: newAnswers,
   })
 }
   setOverallState(key, obj) {
@@ -56,34 +58,14 @@ updateAnswerForm(questionNum, answerVal) {
   componentWillMount() {
     this.getAllProducts();
     this.getAllQuestions();
-    console.log('here', this.state.questions)
+    console.log('here', this.state.products)
     this.setState({
       activeProduct: this.state.products[0],
     });
+    // this.showProducts();
   }
 
-// PUT /users/
-  // PutUser(e) {
-  //   e.preventDefault();
-  //   const bodyObj = {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName,
-  //     email: this.state.email,
-  //     password: this.state.password
-  //   }
-  //   fetch('/api/v1/users', {
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     method: 'PUT',
-  //     body: JSON.stringify(bodyObj)
-  //   })
-  //   .then(r => r.json())
-  //   .then((token) => {
-  //     localStorage.setItem('userAuthToken', token);
-  //   })
-  //   .catch(err => console.log(err));
-  // }
+
 
   // DeleteUser(e){
   //   e.preventDefault();
@@ -143,7 +125,6 @@ updateAnswerForm(questionNum, answerVal) {
     .catch(err => console.log(err))
   }
 
-
   getAllProducts() {
     const token = localStorage.getItem('userAuthToken');
     fetch('/api/v1/products', {
@@ -184,27 +165,12 @@ updateAnswerForm(questionNum, answerVal) {
   //     .catch(err => console.log(err));
   // }
 
-  editProduct() {
-    console.log('here');
-    const token = localStorage.getItem('userAuthToken');
-    fetch(`/api/v1/products/${id}`, {
-        headers: new Headers ({
-          Token_Authorization: token,
-          'Content-Type': 'application/json',
-        }),
-        method: 'PUT',
-      })
-      .then(r => r.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          activeProduct: data
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-
+  // handleSelectedItem(id) {
+  //   fetch`(/api/v1/products/${id}`, {
+  //     method: 'PUT'
+  //   })
+  //   .then(() => )
+  // }
 
 // mutator function changes slected product
 // Code acquired from FireHouse lab.
@@ -233,8 +199,8 @@ updateAnswerForm(questionNum, answerVal) {
           products: this.state.products,
           changeProduct: this.changeProduct.bind(this),
           getAllProducts: this.getAllProducts.bind(this),
-          editProduct: this.editProduct.bind(this),
           activeProduct: this.state.activeProduct,
+          // showProducts: this.showProducts.bind(this),
           updateAnswerForm: this.updateAnswerForm.bind(this),
           questions: this.state.questions,
         })
