@@ -1,6 +1,6 @@
 BEGIN;
 
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('West Elm Chair', 'This chair is brand new, but we never used it.', 1, 59.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('West Elm Chair', 'This chair is brand new, because we never used it.', 1, 59.99, 0);
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Restoration Hardware Couch', 'Our couch sat in a room and was never sat in.', 1, 119.99, 0);
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Wayfair Leather Chair', 'Like New. So comfortable.', 2, 129.99, 0);
 INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Restoration Hardware Table', 'Got a bigger table. Do not want.', 2, 139.99, 0);
