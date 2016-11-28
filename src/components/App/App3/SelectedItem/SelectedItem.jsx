@@ -8,7 +8,6 @@ class SelectedItem extends Component {
     super(props);
   }
     render(){
-      if(!this.state.edit)
       return (
         <div className={styles["selected-item"]}>
           <h1>Selected Product</h1>
@@ -19,9 +18,6 @@ class SelectedItem extends Component {
           />
         </div>
         );
-      else {
-
-      }
   }
 }
 
