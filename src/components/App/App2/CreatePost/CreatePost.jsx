@@ -44,6 +44,7 @@ constructor(props) {
         </div>
         <p>Images:</p>
         <DropZone
+          className={styles['drop-zone']}
           multiple={false}
           accept="image/*"
           onDrop={this.onImageDrop.bind(this)}>

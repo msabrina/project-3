@@ -52,3 +52,9 @@
   border-radius: .2em;
   border-style: none;
 }
+
+.drop-zone {
+  height: 30vh;
+  width: 35vw;
+  border: 2px dotted grey;
+}
