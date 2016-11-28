@@ -11,7 +11,8 @@
 }
 
 .new-post {
-  /*margin-left: 150%;*/
+  margin-left: 90%;
+  margin-top: 5%;
   height: 5vh;
   width: 10vw;
   border-radius: 1em;

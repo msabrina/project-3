@@ -12,6 +12,10 @@
   opacity: .9;
 }
 
+.my-post p {
+  margin: 3%;
+}
+
 .post-text {
   display: flex;
   flex-direction: column;
