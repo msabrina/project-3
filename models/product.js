@@ -2,6 +2,8 @@ const db   = require('../db/db.js');
 const auth = require('../lib/auth.js');
 
 const md5 = require('md5');
+const fs = require('fs');
+const path = require('path');
 
 function getAllProducts (req, res, next) {
   const firstQuery = `SELECT * FROM post;`;
@@ -56,53 +58,55 @@ function getNextPostID (req, res, next) {
   .catch(err => next(err));
 }
 
+function getUserData (req, res, next) {
+  const token = req.headers['token_authorization'] || req.body.token || req.params.token || req.query.token;
+  auth.getUserData(token)
+  .then((user) => {
+    req.userInfo = user.data
+    res.userData = user.data
+  })
+  .then(() => next())
+  .catch(err => next(err));
+}
+
 function createProduct (req, res, next) {
-  console.log(req.body);
-  console.log(req.files);
+  console.log(res.userInfo)
   const title = req.body.title;
   const description = req.body.description;
   const price = req.body.price;
-  const imageCount = req.files.length;
-  const token = req.headers['token_authorization'] || req.body.token || req.params.token || req.query.token;
-  let user_id = null;
-  auth.getUserData(token)
-  .then((user) => {
-    res.userData = user.data;
-    user_id = user.data.user_id;
-  })
-  .then(() => {
-    const queryOne = `
-      INSERT INTO post
-        (title, description, price, image_count, user_id)
-      VALUES
-        ($1, $2, $3, $4, $5)
-      RETURNING *;
-    `;
+  const user_id = res.userData.user_id;
+  const imageCount = Object.keys(req.files).length;
 
-    const queryTwo = `
-      INSERT INTO user_post_ref
-        (user_id, post_id)
-      VALUES
-        ($5, $6)
-      ;
-    `;
+  const queryOne = `
+    INSERT INTO post
+      (title, description, price, image_count, user_id)
+    VALUES
+      ($1, $2, $3, $4, $5)
+    RETURNING *;
+  `;
 
-    const values = [
-      title,
-      description,
-      price,
-      imageCount,
-      user_id,
-    ];
+  const queryTwo = `
+    INSERT INTO user_post_ref
+      (user_id, post_id)
+    VALUES
+      ($5, $6)
+    ;
+  `;
 
-    db.one(queryOne, values)
-    .then((inserted) => {
-      res.insertedPost = inserted;
-      values.push(parseInt(inserted.post_id));
-      db.none(queryTwo, values)
-      .then(() => next())
-      .catch(err => next(err));
-    })
+  const values = [
+    title,
+    description,
+    price,
+    imageCount,
+    user_id,
+  ];
+
+  db.one(queryOne, values)
+  .then((inserted) => {
+    res.insertedPost = inserted;
+    values.push(parseInt(inserted.post_id));
+    db.none(queryTwo, values)
+    .then(() => next())
     .catch(err => next(err));
   })
   .catch(err => next(err));
@@ -111,16 +115,19 @@ function createProduct (req, res, next) {
 function generateFileNames (req, res, next) {
   const post = res.insertedPost;
   const user = res.userData;
-  const preHash = `${post.post_id}-${user.user_id}`;
-  const hash = md5(preHash);
-  req.generatedFileName = hash;
-  res.generatedFileName = hash;
+  const hash = md5(`${post.post_id}-${user.user_id}`);
+  res.generatedFilePrefix = hash;
   next();
 }
 
 function createImages (req, res, next) {
-  const uploadPath = `public/uploads`;
-  const tempPath = `public/uploads/temp`;
+  const uploadPath = `public/uploads/temp/`;
+  const post = res.insertedPost;
+  const user = res.userData;
+  const hash = md5(`${user.userID}-${post.title.toLowerCase()}`);
+  for (let fileKey in req.files) {
+    AWSService.uploadFile(fileKey, req.files[fileKey], res.generatedFilePrefix)
+  }
   next();
 }
 
@@ -159,6 +166,7 @@ module.exports = {
   getOneProduct,
   getOneProductImages,
   getNextPostID,
+  getUserData,
   createProduct,
   generateFileNames,
   createImages,

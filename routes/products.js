@@ -1,6 +1,7 @@
 const router       = require('express').Router();
 const productModel = require('../models/product.js');
 const auth         = require('../lib/auth.js');
+const { getUserData } = require('../models/user.js');
 
 const multer = require('multer');
 const fs = require('fs');
@@ -27,25 +28,16 @@ const md5 = require('md5');
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    const title = req.body.title;
-    const hash = md5(title);
     const tempPath = `public/uploads/temp/`;
-    const newPath = `public/uploads/${hash}/`;
-    fs.access(newPath, fs.F_OK, (err) => {
-      if (err) {
-        fs.mkdirSync(newPath);
-      }
-      callback(null, newPath);
-      // callback(null, `public/uploads`);
-    });
+    callback(null, tempPath);
   },
   filename: (req, file, callback) => {
-    console.log(file)
     const extension = path.extname(file.originalname);
     const title = req.body.title.toLowerCase();
-    const hash = md5(title);
-    const newName = `${file.fieldname}${extension}`;
-    callback(null, newName)
+    const userID = req.userInfo.user_id;
+    const hash = md5(`${userID}-${title}`);
+    const newName = `${hash}-${file.fieldname}${extension}`;
+    callback(null, newName);
   },
 });
 
@@ -57,14 +49,14 @@ function sendAsJSON (req, res, next) {
 }
 
 const fields = [
-  { name: 'title', maccount: 1 },
-  { name: 'description', maccount: 1 },
-  { name: 'price', maccount: 1 },
-  { name: 'image-1', maccount: 1 },
-  { name: 'image-2', maccount: 1 },
-  { name: 'image-3', maccount: 1 },
-  { name: 'image-4', maccount: 1 },
-  { name: 'image-5', maccount: 1 },
+  { name: 'title', maxcount: 1 },
+  { name: 'description', maxcount: 1 },
+  { name: 'price', maxcount: 1 },
+  { name: 'image-1', maxcount: 1 },
+  { name: 'image-2', maxcount: 1 },
+  { name: 'image-3', maxcount: 1 },
+  { name: 'image-4', maxcount: 1 },
+  { name: 'image-5', maxcount: 1 },
 ]
 
 router.route('/:id')
@@ -74,6 +66,6 @@ router.route('/:id')
 
 router.route('/')
   .get(productModel.getAllProducts, sendAsJSON)
-  .post(auth.authenticateUser, upload.fields(fields), productModel.createProduct, productModel.generateFileNames, productModel.createImages, sendAsJSON);
+  .post(auth.authenticateUser, productModel.getUserData, upload.fields(fields), productModel.createProduct, productModel.generateFileNames, productModel.createImages, sendAsJSON);
 
 module.exports = router;
