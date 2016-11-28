@@ -7,7 +7,7 @@ function sendAsJSON (req, res, next) {
 }
 
 router.route('/:id')
-  .get(auth.authenticateUser, productModel.getOneProduct, sendAsJSON)
+  .get(auth.authenticateUser, productModel.getOneProduct, productModel.getOneProductImages, sendAsJSON)
   .put(auth.authenticateUser, productModel.editProduct, sendAsJSON)
   .delete(auth.authenticateUser, productModel.deleteProduct, sendAsJSON);
 
