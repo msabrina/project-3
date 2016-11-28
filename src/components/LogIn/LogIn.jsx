@@ -76,7 +76,7 @@ render() {
               onChange={this.updatePasswordForm.bind(this)}
             />
           </div>
-          <button><Link onClick={this.doLogin.bind(this)} className={styles['app-button']} to="/app"> Log In </Link></button>
+          <Link className={styles['app-button']} to="/app"><button> Log In </button></Link>
           </div>
         </form>
       </div>
@@ -85,3 +85,5 @@ render() {
 }
 
 export default LogIn;
+
+// onClick={this.doLogin.bind(this)}

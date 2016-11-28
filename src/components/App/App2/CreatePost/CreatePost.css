@@ -1,11 +1,54 @@
 .create-post {
   height: 80vh;
-  width: 65vw;
-  background-color: pink;
+  width: 68vw;
+  background-color: #FAFAFA;
   margin-right: 2%;
   margin-top: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 1em;
+}
+
+.create-post button {
+  position: absolute;
+  left: 82%;
+  height: 6vh;
+  width: 10vw;
+  background-color: salmon;
+  opacity: .8;
+  color: #FAFAFA;
+  border-radius: .5em;
+  border-style: none;
+}
+
+.title-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title-box input {
+  height: 3vh;
+  margin-left: 2%;
+  width: 34vw;
+  border-radius: .2em;
+  border-style: none;
+}
+
+.description-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.description-box input {
+  height: 3vh;
+  margin-left: 2%;
+  width: 30vw;
+  border-radius: .2em;
+  border-style: none;
 }

@@ -1,0 +1,20 @@
+.profile-info {
+  text-align: left;
+  background-color: #FAFAFA;
+  width: 29vw;
+  font-family: arial;
+  border-top: 1px solid grey;
+ /* border-bottom: 1px solid lightgrey;*/
+  margin: 1%;
+}
+
+.profile-edit {
+  margin-left: 80%;
+  margin-top: -5%;
+  height: 3vh;
+  width: 5vw;
+  background-color: lightblue;
+  border-radius: 1em;
+  border-style: none;
+  color: #FAFAFA;
+}

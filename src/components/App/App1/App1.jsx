@@ -10,14 +10,13 @@ class App1 extends Component {
   render() {
     return (
       <div>
-      <Link to="/product">App3</Link>
         <div className={styles["Header"]}>
           <Header />
         </div>
+        <div className={styles['app']}>
         <PostItems
           products={this.props.products}
         />
-        <div className={styles['app']}>
         <Profile />
         </div>
       </div>
