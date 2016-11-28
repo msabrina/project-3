@@ -53,13 +53,13 @@ INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3,
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (7, 'What is your current living status?', 'Own a home', 'Rent a home', 'Rent with roomates', 'Homeless');
 INSERT INTO question (question_num, question_text, choice_1, choice_2, choice_3, choice_4) VALUES (8, 'What is your current vehicle ownership status?', 'Own 1', 'Own 2+', 'Lease', 'None');
 
-INSERT INTO answers (question_num, correct_answer) VALUES (1, 1);
-INSERT INTO answers (question_num, correct_answer) VALUES (2, 1);
-INSERT INTO answers (question_num, correct_answer) VALUES (3, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (1, 4);
+INSERT INTO answers (question_num, correct_answer) VALUES (2, 4);
+INSERT INTO answers (question_num, correct_answer) VALUES (3, 3);
 INSERT INTO answers (question_num, correct_answer) VALUES (4, 1);
-INSERT INTO answers (question_num, correct_answer) VALUES (5, 1);
-INSERT INTO answers (question_num, correct_answer) VALUES (6, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (5, 2);
+INSERT INTO answers (question_num, correct_answer) VALUES (6, 2);
 INSERT INTO answers (question_num, correct_answer) VALUES (7, 1);
-INSERT INTO answers (question_num, correct_answer) VALUES (8, 1);
+INSERT INTO answers (question_num, correct_answer) VALUES (8, 2);
 
 COMMIT;

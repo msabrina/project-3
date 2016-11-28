@@ -1,6 +1,6 @@
 const db         = require('../db/db.js');
 const auth       = require('../lib/auth.js');
-const AWSService = require('../services/AWS.js');
+const CloudinaryService = require('../services/cloudinary.js');
 
 const md5  = require('md5');
 const fs   = require('fs');
@@ -71,7 +71,6 @@ function getUserData (req, res, next) {
 }
 
 function createProduct (req, res, next) {
-  console.log(res.userInfo)
   const title = req.body.title;
   const description = req.body.description;
   const price = req.body.price;
@@ -122,14 +121,76 @@ function generateFilePrefix (req, res, next) {
 }
 
 function createImages (req, res, next) {
-  const uploadPath = `public/uploads/temp/`;
+  // const uploadPath = `public/uploads/temp/`;
   const post = res.insertedPost;
-  const user = res.userData;
-  const hash = md5(`${user.userID}-${post.title.toLowerCase()}`);
+  // const user = res.userData;
+  // const hash = md5(`${user.userID}-${post.title.toLowerCase()}`);
+  let allLocalImagePaths = [];
+  const filePrefix = res.generatedFilePrefix;
   for (let fileKey in req.files) {
-    // AWSService.uploadFile(fileKey, req.files[fileKey], res.generatedFilePrefix)
+    let file = req.files[fileKey][0];
+    let oldPath = file.path;
+    let newPath = `${file.destination}${filePrefix}-${file.fieldname}${path.extname(file.originalname)}`;
+    fs.renameSync(oldPath, newPath)
+    allLocalImagePaths.push(path.join(__dirname, `../${newPath}`));
   }
-  next();
+
+  Promise.all(allLocalImagePaths.map((path) => {
+    return CloudinaryService.uploadImage(path).catch(err => err);
+  }))
+  .then((data) => {
+    db.tx(t => {
+      const queryOne = `INSERT INTO image (title, alt_text, url) VALUES ($1, $1, $2) RETURNING *;`;
+      const queryTwo = `INSERT INTO image_post_ref (post_id, image_id) VALUES ($1, $2);`;
+
+      data.forEach((result) => {
+        let valuesOne = [
+          post.title,
+          result.url,
+        ];
+        return t.one(queryOne, valuesOne)
+          .then((insertedImage) => {
+              const valuesTwo = [
+                post.post_id,
+                insertedImage.image_id,
+              ];
+              return t.none(queryTwo, valuesTwo);
+          })
+          .catch(err => next(err));
+        });
+    })
+    .then(() => next())
+    .catch(err => next(err));
+    res.rows = data;
+  })
+  .catch(err => next(err));
+
+  // allLocalImagePaths.forEach((path, i) => {
+  //   let valuesOne = [
+  //     post.title
+  //   ],
+  //   CloudinaryService.uploadImage(path)
+  //   .then(result => {
+  //     valuesOne.push(result.url);
+
+  //     const queryOne = `INSERT INTO image (title, alt_text, url) VALUES ($1, $1, $2) RETURNING *;`;
+  //     const queryTwo = `INSERT INTO image_post_ref (post_id, image_id) VALUES ($1, $2);`;
+
+  //     db.tx(t => {
+  //       return t.one(queryOne, valuesOne)
+  //         .then((insertedImage) => {
+  //           const valuesTwo = [
+  //             post.post_id,
+  //             insertedImage.image_id,
+  //           ];
+  //           return db.none(queryTwo, valuesTwo);
+  //         })
+  //     })
+
+  //     .catch(err => next(err));
+  //   })
+  //   .catch(err => console.log(err));
+  // })
 }
 
 function editProduct (req, res, next) {
