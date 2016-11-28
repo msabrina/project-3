@@ -15,7 +15,6 @@ class Header extends Component {
       <nav className={styles['links']}>
         <Link className={styles['create-post']} to="/create">Create Post</Link>
         <Link className={styles['profile']} to="/profile">Profile</Link>
-        <Link to="/product">APP3</Link>
       </nav>
 
       </div>

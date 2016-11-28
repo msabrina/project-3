@@ -7,7 +7,7 @@ const MyPostContainer = props => (
   <div className={styles["my-post-container"]}>
     <h3>My Posts</h3>
     <MyPost />
-    <Link to='/create'><button className={styles["new-post"]}>Submit New Post</button></Link>
+    <Link to='/create'><button className={styles["new-post"]}>Create New Post</button></Link>
   </div>
   );
 
