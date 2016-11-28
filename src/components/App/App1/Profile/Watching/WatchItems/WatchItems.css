@@ -1,0 +1,41 @@
+.watch-items {
+  background-color: #FAFAFA;
+  height: 20vh;
+  width: 29vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.watch-info {
+  width: 19vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.watch-pic-delete {
+  width: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.watch-pic-delete img {
+  height: 12vh;
+  width: 10vw;
+}
+
+.watch-pic-delete button {
+  margin-top: 2%;
+  margin-right: 6%;
+  height: 3vh;
+  width: 5vw;
+  background-color: lightblue;
+  border-radius: 1em;
+  border-style: none;
+  color: #FAFAFA;
+}

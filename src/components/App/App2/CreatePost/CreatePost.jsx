@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DropZone from 'react-dropzone';
+import { Link } from 'react-router';
 import styles from './CreatePost.css';
 
 
@@ -37,16 +38,21 @@ constructor(props) {
     return (
       <div className={styles["create-post"]}>
         <h1>Create Post:</h1>
-        <p>Title:</p>
-        <input type="text" value={this.state.title} />
+        <div className={styles['title-box']}>
+          <p>Title:</p>
+          <input type="text" value={this.state.title} />
+        </div>
         <p>Images:</p>
         <DropZone
           multiple={false}
           accept="image/*"
           onDrop={this.onImageDrop.bind(this)}>
         </DropZone>
-        <p>Description:</p>
-        <input type="text" value={this.state.description} />
+        <div className={styles['description-box']}>
+          <p>Description:</p>
+          <input type="text" value={this.state.description} />
+        </div>
+        <Link to="/profile"><button> Create Post </button></Link>
       </div>
     );
   }

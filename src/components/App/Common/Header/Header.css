@@ -1,7 +1,8 @@
 .header-container {
-  height: 15vh;
+  height: 10vh;
   width: 100%;
-  background-color: lightgreen;
+  background-color: salmon;
+  opacity: .8;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,6 +11,15 @@
 
 .logo {
   margin: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  height: 10vh;
+  width: 7vw;
 }
 
 .links {
@@ -18,22 +28,26 @@
 
 .create-post {
   margin: 10%;
-  font-size: 1.5em;
+  font-size: 1em;
   text-decoration: none;
   font-family: arial;
+  color: black;
+  text-decoration: none;
 }
 
 .profile {
   margin: 10%;
-  font-size: 1.5em;
+  font-size: 1em;
   text-decoration: none;
   font-family: arial;
+  color: black;
+  text-decoration: none;
 }
 
 .header-container h1 {
   margin: 0;
   font-family: arial;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 nav {

@@ -7,7 +7,7 @@ const SelectedItem = props => (
   <div className={styles["selected-item"]}>
     <h1>Selected Product</h1>
     <ProductBox />
-    <RelatedItems />
+    <button>Add to Watchlist</button>
   </div>
   );
 

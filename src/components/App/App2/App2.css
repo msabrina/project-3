@@ -1,4 +1,8 @@
 .app {
   display: flex;
   flex-direction: row;
+  background-image: url('/app1.png');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
 }

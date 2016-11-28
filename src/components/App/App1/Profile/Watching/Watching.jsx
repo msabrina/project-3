@@ -1,9 +1,9 @@
 import React from 'react';
 import WatchItems from './WatchItems/WatchItems.jsx';
-import './Watching.css';
+import styles from './Watching.css';
 
 const Watching = props => (
-  <div className="watching">
+  <div className={styles["watching"]}>
     <h3>Watching</h3>
     <WatchItems />
   </div>

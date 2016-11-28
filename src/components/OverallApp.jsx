@@ -100,30 +100,30 @@ class OverallApp extends Component {
 //     .catch(err => console.log(err));
 //   }
 
-  postUsersSurvey() {
-    fetch('/users/survey', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
-      method: 'POST',
-      body: JSON.stringify({
-        email: document.getElementById('email').value
-        answer: {
-          1: document.getElementById('answer-1').value,
-          2: document.getElementById('answer-2').value,
-          3: document.getElementById('answer-3').value,
-          4: document.getElementById('answer-4').value,
-          5: document.getElementById('answer-5').value,
-          6: document.getElementById('answer-6').value,
-          7: document.getElementById('answer-7').value,
-          8: document.getElementById('answer-8').value,
-          9: document.getElementById('answer-9').value,
-          10: document.getElementById('answer-10').value,
-        }
-      })
-      .then(r => r.json())
-      .then((response) => )
-  })
+  // postUsersSurvey() {
+  //   fetch('/users/survey', {
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json'
+  //     }),
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       email: document.getElementById('email').value
+  //       answer: {
+  //         1: document.getElementById('answer-1').value,
+  //         2: document.getElementById('answer-2').value,
+  //         3: document.getElementById('answer-3').value,
+  //         4: document.getElementById('answer-4').value,
+  //         5: document.getElementById('answer-5').value,
+  //         6: document.getElementById('answer-6').value,
+  //         7: document.getElementById('answer-7').value,
+  //         8: document.getElementById('answer-8').value,
+  //         9: document.getElementById('answer-9').value,
+  //         10: document.getElementById('answer-10').value,
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then((response) => )
+  // })
 
   getAllProducts() {
     const token = localStorage.getItem('userAuthToken');
