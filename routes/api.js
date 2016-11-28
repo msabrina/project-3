@@ -7,4 +7,16 @@ const productsRouter   = require('./products.js');
 router.use('/users', usersRouter);
 router.use('/products', productsRouter);
 
+
+const md5 = require('md5');
+
+router.get('/test', (req, res) => {
+
+  // testing
+  console.log(md5('testing testing 1 2 3'))
+  console.log(md5('testing testing 1 2 3'))
+  console.log(md5('testing testing 1 2 3'))
+  res.send('ook');
+})
+
 module.exports = router;
