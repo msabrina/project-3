@@ -1,11 +1,11 @@
 BEGIN;
 
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 1', 'This is product 1', 1, 9.99, 0);
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 2', 'This is product 2', 1, 19.99, 0);
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 3', 'This is product 3', 2, 29.99, 0);
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 4', 'This is product 4', 2, 39.99, 0);
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 5', 'This is product 5', 3, 49.99, 0);
-INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Test 6', 'This is product 6', 4, 59.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('West Elm Chair', 'This chair is brand new, because we never used it.', 1, 59.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Restoration Hardware Couch', 'Our couch sat in a room and was never sat in.', 1, 119.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Wayfair Leather Chair', 'Like New. So comfortable.', 2, 129.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Restoration Hardware Table', 'Got a bigger table. Do not want.', 2, 139.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('Joss & Main Living Room Set', 'Too small for our new home. Like new.', 3, 149.99, 0);
+INSERT INTO post (title, description, user_id, price, image_count) VALUES ('West Elm Couch', 'Love this couch. We will take anything for it', 4, 159.99, 0);
 
 INSERT INTO image (title, url, alt_text) VALUES ('T1', '/image-1.png', 'Alt 1');
 INSERT INTO image (title, url, alt_text) VALUES ('T2', '/image-2.png', 'Alt 2');

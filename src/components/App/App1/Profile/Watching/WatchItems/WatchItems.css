@@ -9,6 +9,10 @@
   border-radius: 1em;
 }
 
+.watch-items p {
+  margin: 3%;
+}
+
 .watch-items:hover {
   background-color: #eff5ff;
   opacity: .9;
@@ -37,7 +41,7 @@
 
 .watch-pic-delete button {
   margin-top: 2%;
-  margin-right: 6%;
+  margin-right: 24%;
   height: 3vh;
   width: 5vw;
   background-color: lightblue;
