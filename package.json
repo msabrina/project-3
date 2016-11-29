@@ -21,7 +21,8 @@
     "url": "https://github.com/Team-CodeX/project-3/issues"
   },
   "engines": {
-    "node": "7.0.0"
+    "node": "7.0.0",
+    "npm": "4.0.3"
   },
   "homepage": "https://github.com/Team-CodeX/project-3#readme",
   "dependencies": {
@@ -52,7 +53,8 @@
     "babel-plugin-transform-strict-mode": "^6.11.3",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.3.13",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
     "eslint": "^3.10.2",
