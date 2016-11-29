@@ -17,7 +17,7 @@ router.route('/login')
 router.route('/')
   .get(auth.authenticateUser, userModel.getUserData, userModel.getUserPosts, userModel.getUserWatches, userModel.prepareResponse, sendAsJSON)
   .post(userModel.createUser, sendAsJSON)
-  .put(auth.authenticateUser, userModel.updateUser, sendAsJSON)
+  .put(auth.authenticateUser, userModel.getUserData, userModel.updateUser, sendAsJSON)
   .delete(auth.authenticateUser, userModel.deleteUser, sendAsJSON);
 
 module.exports = router;
