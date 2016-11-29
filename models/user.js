@@ -50,6 +50,7 @@ function getUserData (req, res, next) {
 function getUserPosts (req, res, next) {
   const values = [res.userInfo.user_id];
   const query = `SELECT * FROM post INNER JOIN user_post_ref ON user_post_ref.post_id = post.post_id WHERE user_post_ref.user_id = $1;`;
+  // const query = `SELECT p.*, u.email, i.* FROM post p INNER JOIN user_post_ref ur ON ur.post_id = p.post_id INNER JOIN "user" u ON u.user_id = $1 INNER JOIN image_post_ref ir ON ir.post_id = p.post_id INNER JOIN image i ON i.image_id = ir.image_id WHERE u.user_id = $1;`;
   db.any(query, values)
   .then(posts => res.userPosts = posts)
   .then(() => next())
@@ -124,26 +125,29 @@ function logIn (req, res, next) {
   .catch(err => next(err));
 }
 
-function updateUser (req, res, nnext) {
-  // get data
-  const first = req.body.firstName;
-  const last = req.body.lastName;
-  const email = req.body.email.toLowerCase();
-  const password = bcrypt.hashSync(req.body.password, SALTROUNDS);
+function updateUser (req, res, next) {
+  if (!isValidEmail(req.body.email)) next(new Error('Please submit a valid email address.'));
 
-  // validate data
-  if (!(first || last || email || password)) next(new Error('Please check that all fields were filled out properly.'));
-  if (!isValidEmail(email)) next(new Error('Please submit a valid email address.'));
+  let query = `UPDATE "user" SET `;
+  let params = [req.body.firstName, req.body.lastName, req.body.email, req.body.password];
+  let columns = ['fname', 'lname', 'email', 'password'];
+  let values = [];
+  let skip = [];
 
-  // build query
-  const query = `INSERT INTO "user" (fname, lname, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id, fname, lname, email;`;
-  // prepare values array
-  const values = [
-    first,
-    last,
-    email,
-    password,
-  ];
+  params.forEach((val, i) => {
+    if (val) {
+      if (columns[i] == 'password') {
+        values.push(bcrypt.hashSync(params[i], SALTROUNDS))
+        query += `${columns[i]} = $${values.length}, `
+      } else {
+        values.push(params[i])
+        query += `${columns[i]} = $${values.length}, `
+      }
+    }
+  });
+  query = query.slice(0, -2);
+  query += ` WHERE user_id = $${values.length + 1} RETURNING user_id, fname, lname, email;`;
+  values.push(res.userInfo.user_id);
 
   // execute query with the data...
   db.one(query, values)
@@ -164,11 +168,11 @@ function deleteUser (req, res, next) {
   .then((user) => {
     const query = `DELETE FROM "user" WHERE user_id = $1;`;
     const values = [user.data.user_id];
-    // db.none(query, values)
-    // .then(() => next())
-    // .catch(err => next(err));
-    console.log('Deleting ', user);
-    res.rows = `Deleting ${user}`;
+    db.none(query, values)
+    .then(() => next())
+    .catch(err => next(err));
+    // console.log('Deleting ', user);
+    res.rows = `Deleted ${user}`;
     next();
   })
   .catch(err => next(err));
