@@ -19,6 +19,7 @@ function shuffleQuestions (req, res, next) {
 }
 
 function checkIfTooSoon (req, res, next) {
+  next();
   const email = req.body.email;
   // check the email address
   if (!isValidEmail(email)) next(new Error('Please submit a valid email address.'));
@@ -48,7 +49,7 @@ function saveAnswers (req, res, next) {
   let values = [];
 
   // 10 questions; so we want to iterate through them
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 8; i++) {
     // check that each question has a valid choice
     // make sure that each answer exists, and that it's a number between 1 and 4 (inclusive); otherwise throw an error
     if (!(answers[i] || (parseInt(answers[i]) < 1 || parseInt(answers[i] > 4)))) {
@@ -62,7 +63,7 @@ function saveAnswers (req, res, next) {
   values.push(email);
 
   // build the query string
-  const query = `INSERT INTO survey_response (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *;`;
+  const query = `INSERT INTO survey_response (q1, q2, q3, q4, q5, q6, q7, q8, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`;
 
   // ready to insert!
   db.oneOrNone(query, values)
