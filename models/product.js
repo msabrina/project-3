@@ -121,10 +121,7 @@ function generateFilePrefix (req, res, next) {
 }
 
 function createImages (req, res, next) {
-  // const uploadPath = `public/uploads/temp/`;
   const post = res.insertedPost;
-  // const user = res.userData;
-  // const hash = md5(`${user.userID}-${post.title.toLowerCase()}`);
   let allLocalImagePaths = [];
   const filePrefix = res.generatedFilePrefix;
   for (let fileKey in req.files) {
@@ -164,49 +161,28 @@ function createImages (req, res, next) {
     res.rows = data;
   })
   .catch(err => next(err));
-
-  // allLocalImagePaths.forEach((path, i) => {
-  //   let valuesOne = [
-  //     post.title
-  //   ],
-  //   CloudinaryService.uploadImage(path)
-  //   .then(result => {
-  //     valuesOne.push(result.url);
-
-  //     const queryOne = `INSERT INTO image (title, alt_text, url) VALUES ($1, $1, $2) RETURNING *;`;
-  //     const queryTwo = `INSERT INTO image_post_ref (post_id, image_id) VALUES ($1, $2);`;
-
-  //     db.tx(t => {
-  //       return t.one(queryOne, valuesOne)
-  //         .then((insertedImage) => {
-  //           const valuesTwo = [
-  //             post.post_id,
-  //             insertedImage.image_id,
-  //           ];
-  //           return db.none(queryTwo, valuesTwo);
-  //         })
-  //     })
-
-  //     .catch(err => next(err));
-  //   })
-  //   .catch(err => console.log(err));
-  // })
 }
 
 function editProduct (req, res, next) {
-  const prod_id = req.params.id;
-  const title = req.body.title;
-  const description = req.body.description;
+  const postID = req.params.id;
+  let query = `UPDATE post SET `;
+  let params = [req.body.title, req.body.description, req.body.price];
+  let columns = ['title', 'description', 'price'];
+  let values = [];
 
-  const query = `UPDATE post SET title = $2, description = $3 WHERE post_id = $1 RETURNING *;`;
-  const values = [
-    prod_id,
-    title,
-    description,
-  ];
+  params.forEach((val, i) => {
+    if (val) {
+      values.push(params[i])
+      query += `${columns[i]} = $${values.length}, `
+    }
+  });
+  query = query.slice(0, -2);
+  query += ` WHERE post_id = $${values.length + 1} RETURNING *;`;
+  values.push(postID);
 
+  // execute query with the data...
   db.one(query, values)
-  .then((data) => res.rows = data || 'yup')
+  .then((data) => res.rows = data)
   .then(() => next())
   .catch(err => next(err));
 }

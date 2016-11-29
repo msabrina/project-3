@@ -132,7 +132,6 @@ function updateUser (req, res, next) {
   let params = [req.body.firstName, req.body.lastName, req.body.email, req.body.password];
   let columns = ['fname', 'lname', 'email', 'password'];
   let values = [];
-  let skip = [];
 
   params.forEach((val, i) => {
     if (val) {
