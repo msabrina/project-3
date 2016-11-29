@@ -7,7 +7,7 @@ const bodyParser   = require('body-parser');
 const history      = require('connect-history-api-fallback');
 
 const app          = express();
-const PORT         = process.argv[2] || process.env.port || 3000;
+const PORT         = process.argv[2] || process.env.PORT || 3000;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
