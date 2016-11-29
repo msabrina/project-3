@@ -28,9 +28,9 @@ Her Watch List will have all of her favorite posts, but she can remove selected 
 The application uses a SQL database and is deployed on Heroku.
 
 ### Wireframes
-![Wireframe 1](https://wireframe.cc/FduUhq)
-![Wireframe 2](https://wireframe.cc/kjL1el)
-![Wireframe 3](https://wireframe.cc/RJNFDA)
+![Wireframe 1](/public/Profile.png)
+![Wireframe 2](/public/Selected_Product.png)
+![Wireframe 3](/public/Create_Post.png)
 
 ### Challenges
 
