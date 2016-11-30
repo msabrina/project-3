@@ -1,4 +1,4 @@
-const db         = require('../lib/db.js');
+const db         = require('../lib/dbConnect.js');
 const auth       = require('../lib/auth.js');
 const CloudinaryService = require('../services/cloudinary.js');
 
