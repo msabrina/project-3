@@ -1,4 +1,4 @@
-const db = require('../db/db.js');
+const db = require('../lib/dbConnect.js');
 const { isValidEmail } = require('../lib/lib.js');
 
 const scoreThreshold = 7;
