@@ -37,7 +37,7 @@
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
     "path": "^0.12.7",
-    "pg-promise": "^5.4.4",
+    "pg-promise": "^5.4.4"
   },
   "devDependencies": {
     "babel": "^6.5.2",
