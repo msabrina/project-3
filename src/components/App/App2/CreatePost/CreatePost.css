@@ -79,3 +79,8 @@
 .drop-zone:hover {
   background-color: white;
 }
+
+.uploaded-image {
+  max-height: 10px;
+  width: auto;
+}

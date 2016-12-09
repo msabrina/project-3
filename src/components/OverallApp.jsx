@@ -172,6 +172,14 @@ updateAnswerForm(questionNum, answerVal) {
   //   .then(() => )
   // }
 
+  appendNewProduct(prod) {
+    const allProducts = this.state.products;
+    allProducts.push(prod);
+    this.setState({
+      products: allProducts,
+    });
+  }
+
 // mutator function changes slected product
 // Code acquired from FireHouse lab.
   changeProduct(item) {
@@ -202,6 +210,7 @@ updateAnswerForm(questionNum, answerVal) {
           // showProducts: this.showProducts.bind(this),
           updateAnswerForm: this.updateAnswerForm.bind(this),
           questions: this.state.questions,
+          appendNewProduct: this.appendNewProduct.bind(this),
         })
         }
       </div>

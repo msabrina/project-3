@@ -17,7 +17,9 @@ class App2 extends Component {
             changeProduct={this.props.changeProduct}
             products={this.props.products}
           />
-          <CreatePost />
+          <CreatePost
+            appendNewProduct={this.props.appendNewProduct}
+          />
         </div>
       </div>
     );
